@@ -28,6 +28,7 @@
                         <Button HorizontalAlignment="Stretch" Click="Button_Click">
                             Ok
                         </Button>
+                        <NavigationView />
                         <ToggleButton>
                             <Grid Background="Yellow">
                                 <TextBlock>
