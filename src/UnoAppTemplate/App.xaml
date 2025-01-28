@@ -1,4 +1,4 @@
-<Application
+﻿<Application
     x:Class="UnoAppTemplate.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -19,6 +19,8 @@
             </ResourceDictionary>
           </utum:MaterialToolkitTheme.FontOverrideDictionary>-->
                 </utum:MaterialToolkitTheme>
+
+                <ResourceDictionary Source="ms-appx:///Styles/Style.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--  Add resources here  -->
