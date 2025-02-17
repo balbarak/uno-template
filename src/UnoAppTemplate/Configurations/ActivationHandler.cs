@@ -11,6 +11,7 @@ public class ActivationHandler : IActivationHandler
 
     public async Task Activate()
     {
-        App.MainWindow.Content = new ButtonsPage();
+        //App.MainWindow.Content = new ButtonsPage();
+        App.MainWindow.Content = new Shell();
     }
 }

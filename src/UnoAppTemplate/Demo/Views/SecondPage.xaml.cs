@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,17 +13,16 @@ using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
-namespace UnoAppTemplate;
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-public sealed partial class Shell : Page
+namespace UnoAppTemplate.Demo.Views;
+/// <summary>
+/// An empty page that can be used on its own or navigated to within a Frame.
+/// </summary>
+public sealed partial class SecondPage : Page
 {
-    public Shell()
+    public SecondPage()
     {
         this.InitializeComponent();
-    }
-
-    private void OnMenuButtonClick(object sender, RoutedEventArgs e)
-    {
-        _splitView.IsPaneOpen = true;
     }
 }
