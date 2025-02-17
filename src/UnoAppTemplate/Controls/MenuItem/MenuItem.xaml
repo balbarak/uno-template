@@ -8,9 +8,47 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:MenuItem">
-                    <Grid Background="Yellow">
-                        <TextBlock Text="From Template" />
-                    </Grid>
+                    <local:RippleButton
+                        x:Name="RippleElement"
+                        HorizontalContentAlignment="Stretch"
+                        Command="{TemplateBinding Command}"
+                        CommandParameter="{TemplateBinding CommandParameter}"
+                        Foreground="{ThemeResource PrimaryColor}">
+                        <Grid x:Name="PART_Root" Height="56">
+                            <Rectangle Fill="{ThemeResource SurfaceVariantColor}" Visibility="{TemplateBinding IsSelected}" />
+
+                            <Grid Height="56">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="12" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Rectangle
+                                    x:Name="SelectedBorderElement"
+                                    Width="4"
+                                    Margin="2,12"
+                                    Fill="{ThemeResource PrimaryColor}"
+                                    Visibility="{TemplateBinding IsSelected}" />
+
+                                <Grid
+                                    x:Name="RootContentElement"
+                                    Grid.Column="2"
+                                    Padding="8">
+                                    <TextBlock
+                                        x:Name="ContentTextElement"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontFamily="{TemplateBinding TextFont}"
+                                        FontSize="14"
+                                        Foreground="Black"
+                                        Text="{TemplateBinding Text}" />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                    </local:RippleButton>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

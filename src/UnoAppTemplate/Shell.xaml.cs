@@ -1,26 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Security.Principal;
 using Microsoft.UI;
 using Microsoft.UI.Dispatching;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Org.Apache.Http.Conn;
-using Uno.UI.Xaml;
 using UnoAppTemplate.Animations;
 using UnoAppTemplate.Controls;
 using UnoAppTemplate.Demo.Views;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using UnoAppTemplate.Services;
 using Windows.UI.Core;
 
 namespace UnoAppTemplate;
@@ -31,24 +14,22 @@ public sealed partial class Shell : Page
     private Grid _contentRoot;
     private IList<NavigationBag> _stack;
 
-    public ICommand MenuCommand { get; }
-
     public Page CurrentPage { get; private set; }
 
     public bool CanGoBack { get; private set; }
+
+    public ShellViewModel ViewModel => DataContext as ShellViewModel;
 
     public Shell()
     {
         _slim = new SemaphoreSlim(1, 1);
 
+        DataContext = App.GetService<ShellViewModel>();
+
         this.InitializeComponent();
 
         _stack = new List<NavigationBag>();
         _contentRoot = PART_ContentRoot;
-
-        MenuCommand = new AsyncRelayCommand<object>(OnMenuCommand);
-
-        Navigate(new SecondPage(), PageAnimationType.None);
     }
 
     protected override void OnApplyTemplate()
@@ -57,15 +38,14 @@ public sealed partial class Shell : Page
 
     }
 
-    public void ShowMenu()
-    {
-        PART_SplitView.IsPaneOpen = true;
-    }
-
     public void Navigate(Page page, PageAnimationType animationType = PageAnimationType.None)
     {
+        CanGoBack = false;
+
         DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Normal, async () =>
         {
+            SetActiveMenu();
+
             ClearStack();
 
             InsertPage(page);
@@ -76,10 +56,10 @@ public sealed partial class Shell : Page
 
     public void Append(Page page, PageAnimationType animationType = PageAnimationType.None)
     {
-        CanGoBack = true;
-
         DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Normal, async () =>
         {
+            CanGoBack = true;
+
             InsertPage(page);
 
             await page.AnimatePage(animationType);
@@ -100,10 +80,12 @@ public sealed partial class Shell : Page
 
             await currentPage.AnimatePage(animationType);
 
-            CurrentPage = _stack[_stack.Count - 2]?.Content;
+            CurrentPage = _stack[topIndex - 1]?.Content;
+
+            CanGoBack = _stack.Count > 1;
         });
 
-        await Task.Delay(PageAnimationExtensions.ANIMATION_SPEED);
+        await Task.Delay(PageAnimationExtensions.ANIMATION_SPEED + 100);
 
         await Dispatcher.RunAsync(CoreDispatcherPriority.Idle, async () =>
         {
@@ -111,27 +93,19 @@ public sealed partial class Shell : Page
         });
     }
 
-    private void OnMenuButtonClick(object sender, RoutedEventArgs e)
+    public void ShowMenu()
     {
         PART_SplitView.IsPaneOpen = true;
     }
 
-    private async Task OnMenuCommand(object sender)
+    public void HideMenu()
     {
-        var control = sender as MenuItem;
-
-        if (control == null)
-            return;
-
-
-        foreach (MenuItem item in PART_MenuItems.Children)
-        {
-            item.IsSelected = false;
-        }
-
-        control.IsSelected = true;
-
         PART_SplitView.IsPaneOpen = false;
+    }
+
+    private void OnMenuButtonClick(object sender, RoutedEventArgs e)
+    {
+        PART_SplitView.IsPaneOpen = true;
     }
 
     private void ClearStack()
@@ -183,6 +157,22 @@ public sealed partial class Shell : Page
     private bool HasBackStack()
     {
         return _stack.Count > 1;
+    }
+
+    private void SetActiveMenu()
+    {
+
+        foreach (MenuItem item in PART_MenuItems.Children)
+        {
+            if (item.CommandParameter?.ToString() == NavigationService.CurrentRoute)
+            {
+                item.IsSelected = true;
+            }
+            else
+            {
+                item.IsSelected = false;
+            }
+        }
     }
 
 }

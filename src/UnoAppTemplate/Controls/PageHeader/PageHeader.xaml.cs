@@ -36,7 +36,7 @@ public sealed partial class PageHeader : UserControl
 
     private async Task OnGoBack()
     {
-        await App.ContentHost.GoBack(PageAnimationType.SlideToRight);
+        await App.ContentHost.GoBack(PageAnimationType.SlideOutToRight);
     }
 
     protected override void OnApplyTemplate()

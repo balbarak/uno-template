@@ -9,7 +9,11 @@ namespace UnoAppTemplate.Animations;
 public enum PageAnimationType
 {
     None,
-    SlideFromLeft,
-    SlideToLeft,
-    SlideToRight
+    
+    SlideInFromLeft,
+    
+    SlideInFromRight,
+
+    SlideOutToLeft,
+    SlideOutToRight
 }

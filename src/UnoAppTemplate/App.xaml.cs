@@ -8,7 +8,7 @@ global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Options;
 global using UnoAppTemplate.Models;
 global using ApplicationExecutionState = Windows.ApplicationModel.Activation.ApplicationExecutionState;
-
+global using UnoAppTemplate.ViewModels;
 
 using Uno.Resizetizer;
 

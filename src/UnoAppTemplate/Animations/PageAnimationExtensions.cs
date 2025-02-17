@@ -9,7 +9,7 @@ namespace UnoAppTemplate.Animations;
 
 public static class PageAnimationExtensions
 {
-    public const int ANIMATION_SPEED = 1500;
+    public const int ANIMATION_SPEED = 250;
     public static async Task AnimatePage(this Page page, PageAnimationType type)
     {
         switch (type)
@@ -18,20 +18,26 @@ public static class PageAnimationExtensions
 
 
                 break;
-            case PageAnimationType.SlideFromLeft:
+            case PageAnimationType.SlideInFromLeft:
 
                 await page.SlideFromLeft();
 
                 break;
 
-            case PageAnimationType.SlideToLeft:
+            case PageAnimationType.SlideOutToLeft:
 
                 await page.SlideToLeft();
 
                 break;
-            case PageAnimationType.SlideToRight:
+            case PageAnimationType.SlideOutToRight:
 
                 await page.SlideToRight();
+
+                break;
+
+            case PageAnimationType.SlideInFromRight:
+
+                await page.SlideInFromRight();
 
                 break;
             default:
@@ -43,6 +49,22 @@ public static class PageAnimationExtensions
     {
         var storyboard = new Storyboard();
         var animation = storyboard.AddSlideFromLeft(ANIMATION_SPEED, EasingMode.EaseInOut);
+
+        var transforms = new CompositeTransform();
+
+        page.RenderTransform = transforms;
+
+        Storyboard.SetTarget(animation, transforms);
+
+        Storyboard.SetTargetProperty(animation, nameof(CompositeTransform.TranslateX));
+
+        await storyboard.StartAsync();
+    }
+
+    public static async Task SlideInFromRight(this Page page)
+    {
+        var storyboard = new Storyboard();
+        var animation = storyboard.AddSlideFromRight(ANIMATION_SPEED, EasingMode.EaseInOut);
 
         var transforms = new CompositeTransform();
 

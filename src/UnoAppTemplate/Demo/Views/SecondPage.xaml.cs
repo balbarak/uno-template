@@ -28,6 +28,6 @@ public sealed partial class SecondPage : Page
 
     private void GoToNextPage(object sender, RoutedEventArgs e)
     {
-        App.ContentHost?.Append(new ThirdPage(), Animations.PageAnimationType.SlideFromLeft);
+        App.ContentHost?.Append(new ThirdPage(), Animations.PageAnimationType.SlideInFromRight);
     }
 }

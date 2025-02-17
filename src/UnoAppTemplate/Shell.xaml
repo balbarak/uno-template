@@ -2,6 +2,7 @@
     x:Class="UnoAppTemplate.Shell"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:app="using:UnoAppTemplate"
     xmlns:ctl="using:UnoAppTemplate.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:UnoAppTemplate.Controls"
@@ -30,19 +31,15 @@
 
                         <StackPanel x:Name="PART_MenuItems">
                             <ctl:MenuItem
-                                Command="{x:Bind MenuCommand}"
-                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
-                                Text="Menu One" />
+                                Command="{x:Bind ViewModel.GoToPage}"
+                                CommandParameter="{x:Bind app:RouteService.HOME_PAGE}"
+                                Text="Home Page" />
 
                             <ctl:MenuItem
-                                Command="{x:Bind MenuCommand}"
-                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
-                                Text="Menu Two" />
+                                Command="{x:Bind ViewModel.GoToPage}"
+                                CommandParameter="{x:Bind app:RouteService.BUTTONS_PAGE}"
+                                Text="Button Page" />
 
-                            <ctl:MenuItem
-                                Command="{x:Bind MenuCommand}"
-                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
-                                Text="Menu Three" />
                         </StackPanel>
                     </Grid>
 
@@ -56,55 +53,4 @@
 
     </Grid>
 
-    <Page.Resources>
-        <Style TargetType="local:MenuItem">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="local:MenuItem">
-                        <local:RippleButton
-                            x:Name="RippleElement"
-                            HorizontalContentAlignment="Stretch"
-                            Command="{TemplateBinding Command}"
-                            CommandParameter="{TemplateBinding CommandParameter}"
-                            Foreground="{ThemeResource PrimaryColor}">
-                            <Grid x:Name="PART_Root" Height="56">
-                                <Rectangle Fill="{ThemeResource SurfaceVariantColor}" Visibility="{TemplateBinding IsSelected}" />
-
-                                <Grid Height="56">
-
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="12" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Rectangle
-                                        x:Name="SelectedBorderElement"
-                                        Width="4"
-                                        Margin="2,12"
-                                        Fill="{ThemeResource PrimaryColor}"
-                                        Visibility="{TemplateBinding IsSelected}" />
-
-                                    <Grid
-                                        x:Name="RootContentElement"
-                                        Grid.Column="2"
-                                        Padding="8">
-                                        <TextBlock
-                                            x:Name="ContentTextElement"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Center"
-                                            FontFamily="{TemplateBinding TextFont}"
-                                            FontSize="14"
-                                            Foreground="Black"
-                                            Text="{TemplateBinding Text}" />
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-
-                        </local:RippleButton>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Page.Resources>
 </Page>

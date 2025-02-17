@@ -20,9 +20,9 @@ namespace UnoAppTemplate.Views
 	/// <summary>
 	/// An empty page that can be used on its own or navigated to within a Frame.
 	/// </summary>
-	public sealed partial class TestView : Page
+	public sealed partial class TestPage : Page
 	{
-		public TestView()
+		public TestPage()
 		{
 			this.InitializeComponent();
 		}
