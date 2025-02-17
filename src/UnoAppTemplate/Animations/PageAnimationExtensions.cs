@@ -9,6 +9,7 @@ namespace UnoAppTemplate.Animations;
 
 public static class PageAnimationExtensions
 {
+    public const int ANIMATION_SPEED = 1500;
     public static async Task AnimatePage(this Page page, PageAnimationType type)
     {
         switch (type)
@@ -41,7 +42,7 @@ public static class PageAnimationExtensions
     public static async Task SlideFromLeft(this Page page)
     {
         var storyboard = new Storyboard();
-        var animation = storyboard.AddSlideFromLeft(250, EasingMode.EaseInOut);
+        var animation = storyboard.AddSlideFromLeft(ANIMATION_SPEED, EasingMode.EaseInOut);
 
         var transforms = new CompositeTransform();
 
@@ -57,7 +58,7 @@ public static class PageAnimationExtensions
     public static async Task SlideToLeft(this Page page)
     {
         var storyboard = new Storyboard();
-        var animation = storyboard.AddSlideToLeft(250, EasingMode.EaseInOut);
+        var animation = storyboard.AddSlideToLeft(ANIMATION_SPEED, EasingMode.EaseInOut);
 
         var transforms = new CompositeTransform();
 
@@ -73,7 +74,7 @@ public static class PageAnimationExtensions
     public static async Task SlideToRight(this Page page)
     {
         var storyboard = new Storyboard();
-        var animation = storyboard.AddSlideToRight(250, EasingMode.EaseInOut);
+        var animation = storyboard.AddSlideToRight(ANIMATION_SPEED, EasingMode.EaseInOut);
 
         var transforms = new CompositeTransform();
 

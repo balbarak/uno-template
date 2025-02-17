@@ -12,6 +12,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using UnoAppTemplate.Animations;
 
 namespace UnoAppTemplate.Controls;
 
@@ -35,7 +36,7 @@ public sealed partial class PageHeader : UserControl
 
     private async Task OnGoBack()
     {
-        await App.ContentHost.GoBack(Animations.PageAnimationType.SlideToRight);
+        await App.ContentHost.GoBack(PageAnimationType.SlideToRight);
     }
 
     protected override void OnApplyTemplate()

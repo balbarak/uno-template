@@ -14,6 +14,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Org.Apache.Http.Conn;
 using Uno.UI.Xaml;
 using UnoAppTemplate.Animations;
 using UnoAppTemplate.Controls;
@@ -38,7 +39,7 @@ public sealed partial class Shell : Page
 
     public Shell()
     {
-        _slim = new SemaphoreSlim(1,1);
+        _slim = new SemaphoreSlim(1, 1);
 
         this.InitializeComponent();
 
@@ -79,6 +80,15 @@ public sealed partial class Shell : Page
 
         DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Normal, async () =>
         {
+            //var pageContent = page.Content as Grid;
+
+            //if (pageContent != null)
+            //{
+            //    pageContent.Shadow = new Shadow();
+            //    pageContent.BorderBrush = new SolidColorBrush(Colors.Red);
+            //    pageContent.BorderThickness = new Thickness(10);
+            //}
+
             InsertPage(page);
 
             await page.AnimatePage(animationType);
@@ -102,7 +112,7 @@ public sealed partial class Shell : Page
             CurrentPage = _stack[_stack.Count - 2]?.Content;
         });
 
-        await Task.Delay(300);
+        await Task.Delay(PageAnimationExtensions.ANIMATION_SPEED);
 
         await Dispatcher.RunAsync(CoreDispatcherPriority.Idle, async () =>
         {
@@ -163,7 +173,7 @@ public sealed partial class Shell : Page
         {
             await _slim.WaitAsync();
 
-            if (_stack.Count < 2)
+            if (index + 1 > _stack.Count)
                 return;
 
             System.Diagnostics.Debug.WriteLine($"===== Remove index: {index}");

@@ -5,9 +5,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:UnoAppTemplate.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:utu="using:Uno.Toolkit.UI"
     Background="{ThemeResource SurfaceColor}"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <utu:ShadowCollection x:Key="NeumorphismRaising">
+            <!--  Bottom right darker violet  -->
+
+            <utu:Shadow
+                BlurRadius="15"
+                OffsetY="8"
+                Opacity="0.5"
+                Color="Black" />
+
+        </utu:ShadowCollection>
+    </Page.Resources>
     <Grid>
 
         <Grid.RowDefinitions>
@@ -25,4 +38,5 @@
             </StackPanel>
         </Grid>
     </Grid>
+
 </Page>
