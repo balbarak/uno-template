@@ -23,16 +23,40 @@ public sealed partial class PageHeader : UserControl
     public ICommand BackCommand { get => (ICommand)GetValue(BackCommandProperty); set => SetValue(BackCommandProperty, value); }
 
     public static readonly DependencyProperty HeaderProperty =
-    DependencyProperty.Register(nameof(Header), typeof(object), typeof(PageHeader), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(Header), typeof(object), typeof(PageHeader), new PropertyMetadata(null));
     public object Header { get => (object)GetValue(HeaderProperty); set => SetValue(HeaderProperty, value); }
 
     public PageHeader()
     {
         this.InitializeComponent();
+
+        BackCommand = new AsyncRelayCommand(OnGoBack);
+    }
+
+    private async Task OnGoBack()
+    {
+        await App.ContentHost.GoBack(Animations.PageAnimationType.SlideToRight);
+    }
+
+    protected override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
+
+        if (App.ContentHost.CanGoBack)
+        {
+            PART_MenuButton.Visibility = Visibility.Collapsed;
+            PART_BackButton.Visibility = Visibility.Visible;
+        }
+        else
+        {
+            PART_MenuButton.Visibility = Visibility.Visible;
+            PART_BackButton.Visibility = Visibility.Collapsed;
+        }
     }
 
     private void OnMenuButtonClick(object sender, RoutedEventArgs e)
     {
         App.ContentHost?.ShowMenu();
     }
+
 }

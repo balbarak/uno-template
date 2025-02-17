@@ -18,7 +18,7 @@ public partial class App : Application
     public static Window? MainWindow { get; private set; }
     public static IHost? Host { get; private set; }
 
-    public static Shell ContentHost => MainWindow?.Content as Shell;
+    public static Shell ContentHost { get; private set; }
 
     public App()
     {
@@ -44,7 +44,8 @@ public partial class App : Application
 
         if (MainWindow.Content is not Shell)
         {
-            MainWindow.Content = new Shell();
+            ContentHost = new Shell();
+            MainWindow.Content = ContentHost;
         }
 
         await handler.Activate();

@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Principal;
+using Microsoft.UI;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -12,25 +14,32 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Uno.UI.Xaml;
 using UnoAppTemplate.Animations;
 using UnoAppTemplate.Controls;
 using UnoAppTemplate.Demo.Views;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 
 namespace UnoAppTemplate;
 
 public sealed partial class Shell : Page
 {
+    private readonly SemaphoreSlim _slim;
     private Grid _contentRoot;
     private IList<NavigationBag> _stack;
 
-    public ICommand MenuCommand { get;}
+    public ICommand MenuCommand { get; }
 
     public Page CurrentPage { get; private set; }
 
+    public bool CanGoBack { get; private set; }
+
     public Shell()
     {
+        _slim = new SemaphoreSlim(1,1);
+
         this.InitializeComponent();
 
         _stack = new List<NavigationBag>();
@@ -61,6 +70,43 @@ public sealed partial class Shell : Page
             InsertPage(page);
 
             await page.AnimatePage(animationType);
+        });
+    }
+
+    public void Append(Page page, PageAnimationType animationType = PageAnimationType.None)
+    {
+        CanGoBack = true;
+
+        DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Normal, async () =>
+        {
+            InsertPage(page);
+
+            await page.AnimatePage(animationType);
+        });
+    }
+
+    public async Task GoBack(PageAnimationType animationType = PageAnimationType.None)
+    {
+        var topIndex = _stack.Count - 1;
+
+        if (!HasBackStack() || topIndex < 0)
+            return;
+
+        DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Normal, async () =>
+        {
+            var currentPage = _stack[topIndex].Content;
+            var container = _stack[topIndex].Container;
+
+            await currentPage.AnimatePage(animationType);
+
+            CurrentPage = _stack[_stack.Count - 2]?.Content;
+        });
+
+        await Task.Delay(300);
+
+        await Dispatcher.RunAsync(CoreDispatcherPriority.Idle, async () =>
+        {
+            await RemovePage(topIndex);
         });
     }
 
@@ -99,6 +145,7 @@ public sealed partial class Shell : Page
 
         var container = new ContentPresenter()
         {
+            Background = new SolidColorBrush(Colors.Transparent),
             Content = page
         };
 
@@ -110,12 +157,35 @@ public sealed partial class Shell : Page
         _contentRoot.Children.Add(container);
     }
 
-    private void RemovePage(int index)
+    private async Task RemovePage(int index)
     {
-        _stack.RemoveAt(index);
-        _contentRoot.Children.RemoveAt(index);
+        try
+        {
+            await _slim.WaitAsync();
+
+            if (_stack.Count < 2)
+                return;
+
+            System.Diagnostics.Debug.WriteLine($"===== Remove index: {index}");
+
+            _stack.RemoveAt(index);
+            _contentRoot.Children.RemoveAt(index);
+        }
+        catch (Exception)
+        {
+
+        }
+        finally
+        {
+            _slim.Release();
+        }
+    }
+
+    private bool HasBackStack()
+    {
+        return _stack.Count > 1;
     }
 
 }
 
-public record NavigationBag(ContentPresenter Container, Page Content);
+public record NavigationBag(UIElement Container, Page Content);

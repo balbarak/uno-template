@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,5 +24,10 @@ public sealed partial class SecondPage : Page
     public SecondPage()
     {
         this.InitializeComponent();
+    }
+
+    private void GoToNextPage(object sender, RoutedEventArgs e)
+    {
+        App.ContentHost?.Append(new ThirdPage(), Animations.PageAnimationType.SlideFromLeft);
     }
 }

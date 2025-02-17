@@ -16,7 +16,7 @@
         <SplitView
             x:Name="PART_SplitView"
             DisplayMode="Overlay"
-            IsPaneOpen="True"
+            IsPaneOpen="False"
             PanePlacement="Left">
             <SplitView.Pane>
                 <Grid Background="White">

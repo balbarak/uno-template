@@ -21,6 +21,7 @@
 
 
         <Button
+            x:Name="PART_MenuButton"
             Grid.Column="0"
             Padding="0"
             Background="Transparent"
@@ -28,6 +29,17 @@
             CornerRadius="0"
             Foreground="Red">
             <SymbolIcon Margin="8,0" Symbol="GlobalNavigationButton" />
+        </Button>
+
+        <Button
+            x:Name="PART_BackButton"
+            Grid.Column="0"
+            Padding="0"
+            Background="Transparent"
+            Command="{x:Bind BackCommand}"
+            CornerRadius="0"
+            Foreground="Red">
+            <SymbolIcon Margin="8,0" Symbol="Back" />
         </Button>
 
         <ContentPresenter
