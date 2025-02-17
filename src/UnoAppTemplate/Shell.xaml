@@ -2,20 +2,19 @@
     x:Class="UnoAppTemplate.Shell"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ctl="using:UnoAppTemplate.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:UnoAppTemplate.Controls"
-     xmlns:utu="using:Uno.Toolkit.UI"
     xmlns:material="using:Uno.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ctl="using:UnoAppTemplate.Controls"
+    xmlns:utu="using:Uno.Toolkit.UI"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
     <Grid>
 
-
         <SplitView
-            x:Name="_splitView"
+            x:Name="PART_SplitView"
             DisplayMode="Overlay"
             IsPaneOpen="True"
             PanePlacement="Left">
@@ -23,22 +22,27 @@
                 <Grid Background="White">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="120"/>
-                        <RowDefinition/>
+                        <RowDefinition Height="120" />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="1">
-                        <StackPanel>
 
-                            <ctl:MenuItem Text="Menu One"/>
-                            <ctl:MenuItem Text="Menu Two" IsSelected="True"/>
-                            <ctl:MenuItem Text="Menu Three"/>
-                            <NavigationViewItem IsSelected="True" Content="Item Two"/>
-                            <NavigationViewItem IsSelected="True" Content="Item One"/>
+                        <StackPanel x:Name="PART_MenuItems">
+                            <ctl:MenuItem
+                                Command="{x:Bind MenuCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Text="Menu One" />
 
-                            <MenuFlyoutItem Text="ffs"/>
+                            <ctl:MenuItem
+                                Command="{x:Bind MenuCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Text="Menu Two" />
 
-                            <ToggleButton Content="Menu One"/>
+                            <ctl:MenuItem
+                                Command="{x:Bind MenuCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                Text="Menu Three" />
                         </StackPanel>
                     </Grid>
 
@@ -46,42 +50,7 @@
             </SplitView.Pane>
 
             <SplitView.Content>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid Background="{ThemeResource PrimaryContainerColor}" Height="64" Padding="16">
-
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Button Padding="0"
-                                    
-                                    CornerRadius="0"
-                                    Foreground="Red"
-                                    Background="Transparent"
-                                    Click="OnMenuButtonClick">
-                                <SymbolIcon Margin="8,0" Symbol="GlobalNavigationButton" />
-                            </Button>
-
-                            <TextBlock Grid.Column="1" VerticalAlignment="Center">
-                                Home Page
-                            </TextBlock>
-
-                        </Grid>
-
-                    </Grid>
-
-
-                    <Grid Grid.Row="1">
-                        <StackPanel Grid.Row="1">
-                            <Button IsEnabled="True" Content="Welcome"/>
-                        </StackPanel>
-                    </Grid>
-                </Grid>
+                <Grid x:Name="PART_ContentRoot" />
             </SplitView.Content>
         </SplitView>
 
@@ -92,16 +61,16 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="local:MenuItem">
-                        <material:Ripple
-               x:Name="RippleElement"
-               HorizontalContentAlignment="Stretch"
-               Feedback="{ThemeResource PrimaryColor}"
-               FeedbackOpacity=".3">
+                        <local:RippleButton
+                            x:Name="RippleElement"
+                            HorizontalContentAlignment="Stretch"
+                            Command="{TemplateBinding Command}"
+                            CommandParameter="{TemplateBinding CommandParameter}"
+                            Foreground="{ThemeResource PrimaryColor}">
                             <Grid x:Name="PART_Root" Height="56">
-                                <Rectangle Fill="{ThemeResource SurfaceVariantColor}"
-                                       Visibility="{TemplateBinding IsSelected}" />
+                                <Rectangle Fill="{ThemeResource SurfaceVariantColor}" Visibility="{TemplateBinding IsSelected}" />
 
-                                <Grid  Height="56">
+                                <Grid Height="56">
 
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="12" />
@@ -110,29 +79,29 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Rectangle
-                                    x:Name="SelectedBorderElement"
-                                    Width="4"
-                                    Margin="2,12"
-                                    Fill="{ThemeResource PrimaryColor}"
-                                    Visibility="{TemplateBinding IsSelected}" />
+                                        x:Name="SelectedBorderElement"
+                                        Width="4"
+                                        Margin="2,12"
+                                        Fill="{ThemeResource PrimaryColor}"
+                                        Visibility="{TemplateBinding IsSelected}" />
 
                                     <Grid
-    x:Name="RootContentElement"
-    Grid.Column="2"
-    Padding="8">
+                                        x:Name="RootContentElement"
+                                        Grid.Column="2"
+                                        Padding="8">
                                         <TextBlock
-        x:Name="ContentTextElement"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Center"
-                                           
-        FontFamily="{TemplateBinding TextFont}"
-        FontSize="14"
-        Text="{TemplateBinding Text}" />
+                                            x:Name="ContentTextElement"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="{TemplateBinding TextFont}"
+                                            FontSize="14"
+                                            Foreground="Black"
+                                            Text="{TemplateBinding Text}" />
                                     </Grid>
                                 </Grid>
                             </Grid>
 
-                        </material:Ripple>
+                        </local:RippleButton>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

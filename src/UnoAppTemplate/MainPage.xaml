@@ -14,18 +14,7 @@
                     AutomationProperties.AutomationId="HelloTextBlock"
                     Text="Hello Uno Platform! Welcome Fizwick welcome ! laptop" />
 
-                <utu:TabBar Style="{StaticResource BottomTabBarStyle}">
-
-                    <utu:TabBarItem
-                       
-                        Content="Tab One">
-                    </utu:TabBarItem>
-                    <utu:TabBarItem
-                        Icon="Setting"
-                        Selected="True"
-                        Content="Tab Three">
-                    </utu:TabBarItem>
-                </utu:TabBar>
+                <utu:TabBar Style="{StaticResource BottomTabBarStyle}" />
             </StackPanel>
         </Grid>
     </ScrollViewer>

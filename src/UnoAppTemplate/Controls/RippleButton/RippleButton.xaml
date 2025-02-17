@@ -1,0 +1,27 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UnoAppTemplate.Controls"
+    xmlns:material="using:Uno.Material">
+    <Style TargetType="local:RippleButton">
+        <Setter Property="Foreground" Value="{ThemeResource PrimaryColor}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:RippleButton">
+                    <material:Ripple
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Feedback="{TemplateBinding Foreground}"
+                        FeedbackOpacity=".3">
+                        <ContentPresenter
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Content="{TemplateBinding Content}" />
+
+                    </material:Ripple>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
