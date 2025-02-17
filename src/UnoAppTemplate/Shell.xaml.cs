@@ -80,15 +80,6 @@ public sealed partial class Shell : Page
 
         DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Normal, async () =>
         {
-            //var pageContent = page.Content as Grid;
-
-            //if (pageContent != null)
-            //{
-            //    pageContent.Shadow = new Shadow();
-            //    pageContent.BorderBrush = new SolidColorBrush(Colors.Red);
-            //    pageContent.BorderThickness = new Thickness(10);
-            //}
-
             InsertPage(page);
 
             await page.AnimatePage(animationType);
@@ -175,8 +166,6 @@ public sealed partial class Shell : Page
 
             if (index + 1 > _stack.Count)
                 return;
-
-            System.Diagnostics.Debug.WriteLine($"===== Remove index: {index}");
 
             _stack.RemoveAt(index);
             _contentRoot.Children.RemoveAt(index);
