@@ -40,6 +40,11 @@
                                 CommandParameter="{x:Bind app:RouteService.BUTTONS_PAGE}"
                                 Text="Button Page" />
 
+                            <ctl:MenuItem
+                                Command="{x:Bind ViewModel.GoToPage}"
+                                CommandParameter="{x:Bind app:RouteService.TYPOGRAPHY_PAGE}"
+                                Text="Typography" />
+
                         </StackPanel>
                     </Grid>
 

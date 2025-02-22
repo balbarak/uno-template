@@ -19,6 +19,6 @@ public class ActivationHandler : IActivationHandler
     public async Task Activate()
     {
 
-        await _navService.Navigate(RouteService.HOME_PAGE);
+        await _navService.Navigate(RouteService.TYPOGRAPHY_PAGE);
     }
 }

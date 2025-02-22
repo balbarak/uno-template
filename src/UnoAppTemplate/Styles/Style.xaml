@@ -1,6 +1,44 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="Container" TargetType="Grid">
-        <Setter Property="Padding" Value="12,16" />
+        <Setter Property="Margin" Value="12,16" />
+    </Style>
+
+    <Thickness x:Key="Container-Thickness">
+        12,16
+    </Thickness>
+
+    <Style x:Key="Card" TargetType="Grid">
+        <Setter Property="Background" Value="{ThemeResource SurfaceColor}" />
+        <Setter Property="BorderBrush" Value="{ThemeResource OutlineVariantColor}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="12" />
+    </Style>
+
+    <Style x:Key="Card-Content" TargetType="Grid">
+        <Setter Property="Padding" Value="16" />
+    </Style>
+
+    <Style
+        x:Key="Card-Title"
+        BasedOn="{StaticResource Body-Large}"
+        TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{ThemeResource OnSurfaceColor}" />
+    </Style>
+    <Style
+        x:Key="Card-SubTitle"
+        BasedOn="{StaticResource Body-Medium}"
+        TargetType="TextBlock">
+        <Setter Property="Margin" Value="0,0,0,16" />
+        <Setter Property="Foreground" Value="{ThemeResource OnSurfaceVariantColor}" />
+    </Style>
+
+    <Style
+        x:Key="Card-Text"
+        BasedOn="{StaticResource Body-Medium}"
+        TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{ThemeResource OnSurfaceVariantColor}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+
     </Style>
 </ResourceDictionary>

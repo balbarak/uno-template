@@ -18,9 +18,12 @@ public class Startup
 
         services.AddTransient<ShellViewModel>();
         services.AddTransient<HomeViewModel>();
+        services.AddTransient<ThemeViewModel>();
 
         RouteService.RegisterRoute(RouteService.HOME_PAGE, typeof(HomePage));
         RouteService.RegisterRoute(RouteService.TEST_PAGE, typeof(TestPage));
         RouteService.RegisterRoute(RouteService.BUTTONS_PAGE, typeof(ButtonsPage));
+
+        services.AddPage<TypographyViewModel, TypographyPage>(RouteService.TYPOGRAPHY_PAGE);
     }
 }

@@ -13,6 +13,7 @@ public class RouteService
     public const string HOME_PAGE = "//homepage";
     public const string TEST_PAGE = "/test";
     public const string BUTTONS_PAGE = "//buttons";
+    public const string TYPOGRAPHY_PAGE = "//typography";
 
     static RouteService()
     {
