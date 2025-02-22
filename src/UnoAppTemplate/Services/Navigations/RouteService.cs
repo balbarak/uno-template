@@ -11,9 +11,9 @@ public class RouteService
     private static Dictionary<string, Type> _routes;
 
     public const string HOME_PAGE = "//homepage";
-    public const string TEST_PAGE = "/test";
     public const string BUTTONS_PAGE = "//buttons";
     public const string TYPOGRAPHY_PAGE = "//typography";
+    public const string THEME_PAGE = "//theme";
 
     static RouteService()
     {

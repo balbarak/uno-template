@@ -37,6 +37,11 @@
 
                             <ctl:MenuItem
                                 Command="{x:Bind ViewModel.GoToPage}"
+                                CommandParameter="{x:Bind app:RouteService.THEME_PAGE}"
+                                Text="Theme Page" />
+
+                            <ctl:MenuItem
+                                Command="{x:Bind ViewModel.GoToPage}"
                                 CommandParameter="{x:Bind app:RouteService.BUTTONS_PAGE}"
                                 Text="Button Page" />
 
@@ -56,6 +61,7 @@
             </SplitView.Content>
         </SplitView>
 
+        <local:Toaster />
     </Grid>
 
 </Page>

@@ -20,6 +20,6 @@ public class HomeViewModel : BaseViewModel
 
     private async Task OnGoToSecondPage()
     {
-        await _navService.Navigate(RouteService.TEST_PAGE);
+
     }
 }

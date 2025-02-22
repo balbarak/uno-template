@@ -11,10 +11,12 @@ global using ApplicationExecutionState = Windows.ApplicationModel.Activation.App
 global using UnoAppTemplate.ViewModels;
 
 using Uno.Resizetizer;
+using UnoAppTemplate.Demo.Views;
 
 namespace UnoAppTemplate;
 public partial class App : Application
 {
+    private static bool IS_DESING = true;
     public static Window? MainWindow { get; private set; }
     public static IHost? Host { get; private set; }
 
@@ -42,6 +44,14 @@ public partial class App : Application
 
         var handler = GetService<IActivationHandler>();
 
+
+        if (IS_DESING)
+        {
+            MainWindow.Content = new DesignPage();
+            MainWindow.Activate();
+            return;
+        }
+        
         if (MainWindow.Content is not Shell)
         {
             ContentHost = new Shell();

@@ -28,7 +28,7 @@
             <Color x:Key="OutlineColor">#72777F</Color>
             <Color x:Key="OutlineVariantColor">#C2C7CF</Color>
             <Color x:Key="SurfaceInverseColor">#2D3135</Color>
-            <Color x:Key="OnsurfaceInverseColor">#EFF1F6</Color>
+            <Color x:Key="OnSurfaceInverseColor">#EFF1F6</Color>
             <Color x:Key="PrimaryInverseColor">#9DCBFB</Color>
 
 

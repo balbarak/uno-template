@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnoAppTemplate.Demo.Views;
 using UnoAppTemplate.Services;
 using UnoAppTemplate.ViewModels;
 using UnoAppTemplate.Views;
@@ -17,13 +18,11 @@ public class Startup
         services.AddSingleton<INavigationService, NavigationService>();
 
         services.AddTransient<ShellViewModel>();
-        services.AddTransient<HomeViewModel>();
         services.AddTransient<ThemeViewModel>();
-
-        RouteService.RegisterRoute(RouteService.HOME_PAGE, typeof(HomePage));
-        RouteService.RegisterRoute(RouteService.TEST_PAGE, typeof(TestPage));
-
+        
+        services.AddPage<HomeViewModel, HomePage>(RouteService.HOME_PAGE);
         services.AddPage<TypographyViewModel, TypographyPage>(RouteService.TYPOGRAPHY_PAGE);
         services.AddPage<ButtonViewModel, ButtonsPage>(RouteService.BUTTONS_PAGE);
+        services.AddPage<ThemeViewModel, ThemePage>(RouteService.THEME_PAGE);
     }
 }
