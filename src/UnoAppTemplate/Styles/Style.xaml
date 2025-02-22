@@ -2,11 +2,16 @@
 
     <Style x:Key="Container" TargetType="Grid">
         <Setter Property="Margin" Value="12,16" />
+        <Setter Property="Background" Value="{ThemeResource SurfaceContainerLow}" />
     </Style>
 
     <Thickness x:Key="Container-Thickness">
         12,16
     </Thickness>
+
+    <x:Double x:Key="Header-Height">
+        64
+    </x:Double>
 
     <Style x:Key="Card" TargetType="Grid">
         <Setter Property="Background" Value="{ThemeResource SurfaceColor}" />

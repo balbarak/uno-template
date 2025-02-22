@@ -10,13 +10,13 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="64" />
+            <RowDefinition Height="{StaticResource Header-Height}" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
         <local:PageHeader Header="Welcome s" />
 
-        <Grid Grid.Row="1" Background="{ThemeResource SurfaceContainerLow}">
+        <Grid Grid.Row="1" Background="{ThemeResource SurfaceContainerLowColor}">
 
             <ScrollViewer>
                 <StackPanel Margin="{StaticResource Container-Thickness}" Spacing="16">

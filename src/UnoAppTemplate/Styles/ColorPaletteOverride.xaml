@@ -30,7 +30,12 @@
             <Color x:Key="SurfaceInverseColor">#2D3135</Color>
             <Color x:Key="OnsurfaceInverseColor">#EFF1F6</Color>
             <Color x:Key="PrimaryInverseColor">#9DCBFB</Color>
-            <Color x:Key="SurfaceContainerLow">#F2F3F9</Color>
+
+
+            <Color x:Key="SurfaceContainerColor">#ECEEF4</Color>
+            <Color x:Key="SurfaceContainerHighColor">#E6E8EE</Color>
+            <Color x:Key="SurfaceContainerHighestColor">#E0E2E8</Color>
+            <Color x:Key="SurfaceContainerLowColor">#F2F3F9</Color>
         </ResourceDictionary>
         <ResourceDictionary x:Key="Dark">
             <Color x:Key="PrimaryColor">#9DCBFB</Color>

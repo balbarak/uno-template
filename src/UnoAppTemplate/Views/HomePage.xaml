@@ -11,20 +11,20 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="64" />
+            <RowDefinition Height="{StaticResource Header-Height}" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
         <local:PageHeader Header="Home Page" />
 
         <Grid Grid.Row="1" Style="{StaticResource Container}">
-            <StackPanel Spacing="18">
-                <TextBlock Text="Home Page" />
-                <Button
-                    HorizontalAlignment="Stretch"
-                    Command="{x:Bind ViewModel.GoToSecondPage}"
-                    Content="Go To Next Page" />
-            </StackPanel>
+            <Grid Style="{ThemeResource Card}">
+                <Grid Style="{ThemeResource Card-Content}">
+                    <StackPanel>
+                        <TextBlock FontFamily="{StaticResource Font-RobotoBold}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dolor urna, vestibulum vel quam id, scelerisque pretium est. Maecenas est nunc, convallis vel ligula et, auctor tempus nisl. Sed et libero dolor. Nulla tortor justo, placerat a nisi rutrum, bibendum venenatis nisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean diam mauris, aliquet sit amet sapien lacinia, lacinia varius nisl. Integer feugiat felis vitae molestie placerat. Quisque eu nulla vitae mauris tristique dignissim in non mauris." />
+                    </StackPanel>
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </Page>
