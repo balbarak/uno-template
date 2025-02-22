@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +22,12 @@ namespace UnoAppTemplate.Views
 	/// </summary>
 	public sealed partial class ButtonsPage : Page
 	{
-		public ButtonsPage()
+        public ButtonViewModel ViewModel => DataContext as ButtonViewModel;
+
+        public ButtonsPage()
 		{
 			this.InitializeComponent();
+            DataContext = App.GetService<ButtonViewModel>();
 		}
 	}
 }

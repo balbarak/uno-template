@@ -5,6 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ms-appx:///Controls/MenuItem/MenuItem.xaml" />
         <ResourceDictionary Source="ms-appx:///Controls/RippleButton/RippleButton.xaml" />
+        <ResourceDictionary Source="ms-appx:///Controls/LoadingButton/LoadingButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

@@ -6,4 +6,20 @@
     <FontFamily x:Key="Font-RobotoBold">
         ms-appx:///Assets/Fonts/Roboto-Bold.ttf#Roboto
     </FontFamily>
+
+    <FontFamily x:Key="Font-Rubik">
+        ms-appx:///Assets/Fonts/Rubik-Regular.ttf#Rubik
+    </FontFamily>
+
+    <FontFamily x:Key="Font-Tajawal">
+        ms-appx:///Assets/Fonts/Tajawal-Regular.ttf#Tajawal
+    </FontFamily>
+
+    <FontFamily x:Key="Font-TajawalBold">
+        ms-appx:///Assets/Fonts/Tajawal-Bold.ttf#Tajawal
+    </FontFamily>
+    <FontFamily x:Key="Font-TajawalMedium">
+        ms-appx:///Assets/Fonts/Tajawal-Medium.ttf#Tajawal
+    </FontFamily>
+
 </ResourceDictionary>

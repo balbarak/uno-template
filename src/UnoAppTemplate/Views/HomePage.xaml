@@ -22,6 +22,16 @@
                 <Grid Style="{ThemeResource Card-Content}">
                     <StackPanel>
                         <TextBlock FontFamily="{StaticResource Font-RobotoBold}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dolor urna, vestibulum vel quam id, scelerisque pretium est. Maecenas est nunc, convallis vel ligula et, auctor tempus nisl. Sed et libero dolor. Nulla tortor justo, placerat a nisi rutrum, bibendum venenatis nisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean diam mauris, aliquet sit amet sapien lacinia, lacinia varius nisl. Integer feugiat felis vitae molestie placerat. Quisque eu nulla vitae mauris tristique dignissim in non mauris." />
+
+                        <TextBlock FontFamily="{StaticResource Font-Tajawal}" FontSize="24">
+                            بسم الله الرحمن الرحيم
+                        </TextBlock>
+                        <TextBlock FontFamily="{StaticResource Font-TajawalBold}" FontSize="24">
+                            بسم الله الرحمن الرحيم
+                        </TextBlock>
+                        <TextBlock FontFamily="{StaticResource Font-TajawalMedium}" FontSize="24">
+                            بسم الله الرحمن الرحيم
+                        </TextBlock>
                     </StackPanel>
                 </Grid>
             </Grid>

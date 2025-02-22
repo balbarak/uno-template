@@ -4,81 +4,83 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:UnoAppTemplate.Controls"
+    xmlns:material="using:Uno.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:Uno.UI.Toolkit"
+    xmlns:um="using:Uno.Material"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="64" />
+            <RowDefinition Height="{StaticResource Header-Height}" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <local:PageHeader Header="Home Page" />
+        <local:PageHeader Header="Buttons Page" />
 
-        <Grid Grid.Row="1" Style="{StaticResource Container}">
+        <Grid Grid.Row="1" Background="{ThemeResource SurfaceContainerLowColor}">
 
-            <StackPanel Spacing="8">
-                <Grid
-                    Padding="16"
-                    VerticalAlignment="Top"
-                    Background="{ThemeResource SurfaceColor}"
-                    CornerRadius="8">
-                    <StackPanel Spacing="12">
-                        <TextBlock
-                            FontSize="18"
-                            FontWeight="Bold"
-                            Foreground="{ThemeResource OnSurfaceColor}">
-                            Buttons Styles
-                        </TextBlock>
+            <ScrollViewer>
+                <StackPanel Margin="{StaticResource Container-Thickness}" Spacing="16">
+                    <Grid Style="{ThemeResource Card}">
+                        <Grid Style="{StaticResource Card-Content}">
+                            <StackPanel>
+                                <TextBlock Style="{ThemeResource Card-Title}" Text="Buttons" />
+                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Buttons Style" />
 
-                        <Button HorizontalAlignment="Stretch">
-                            Primary Button
-                        </Button>
-                        <Button HorizontalAlignment="Stretch">
-                            Secondary Button
-                        </Button>
-                    </StackPanel>
-                </Grid>
-                <Grid
-                    Padding="16"
-                    VerticalAlignment="Top"
-                    Background="White"
-                    CornerRadius="8">
-                    <StackPanel Spacing="12">
-                        <TextBlock FontSize="18" FontWeight="Bold">
-                            Colors
-                        </TextBlock>
-                        <StackPanel Orientation="Horizontal" Spacing="8">
-                            <Rectangle
-                                Width="40"
-                                Height="40"
-                                Fill="{ThemeResource PrimaryColor}" />
-                            <Rectangle
-                                Width="40"
-                                Height="40"
-                                Fill="{ThemeResource SecondaryColor}" />
-                            <Rectangle
-                                Width="40"
-                                Height="40"
-                                Fill="{ThemeResource TertiaryColor}" />
+                                <StackPanel Spacing="8">
+                                    <Button HorizontalAlignment="Stretch" Content="Default Button" />
 
-                            <Rectangle
-                                Width="40"
-                                Height="40"
-                                Fill="{ThemeResource ErrorColor}" />
+                                    <Button
+                                        HorizontalAlignment="Stretch"
+                                        Content="Tonal Button"
+                                        Style="{ThemeResource Button-Tonal}" />
+                                    <Button
+                                        HorizontalAlignment="Stretch"
+                                        Content="Outline Button"
+                                        Style="{ThemeResource Button-Outline}" />
 
-                            <Rectangle
-                                Width="40"
-                                Height="40"
-                                Fill="{ThemeResource SurfaceVariantColor}" />
-                        </StackPanel>
+                                    <Button
+                                        HorizontalAlignment="Stretch"
+                                        Content="Disabled Button"
+                                        IsEnabled="False" />
 
-                    </StackPanel>
-                </Grid>
-            </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
 
+                    <Grid Style="{ThemeResource Card}">
+                        <Grid Style="{StaticResource Card-Content}">
+                            <StackPanel>
+                                <TextBlock Style="{ThemeResource Card-Title}" Text="Loading Buttons" />
+                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Loading buttons style" />
+
+                                <StackPanel Spacing="8">
+
+
+                                    <local:LoadingButton
+                                        HorizontalAlignment="Stretch"
+                                        Command="{x:Bind ViewModel.LoadCommand}"
+                                        Content="Loading Button"
+                                        IsLoading="{x:Bind ViewModel.IsBusy, Mode=OneWay}" />
+
+                                    <local:LoadingButton
+                                        HorizontalAlignment="Stretch"
+                                        Command="{x:Bind ViewModel.LoadCommand}"
+                                        Content="Loading Button Toan"
+                                        IsLoading="{x:Bind ViewModel.IsBusy, Mode=OneWay}"
+                                        Style="{StaticResource Button-LoadingTonal}" />
+
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
     </Grid>
+
 </Page>

@@ -23,8 +23,8 @@
                     <Grid Style="{ThemeResource Card}">
                         <Grid Style="{StaticResource Card-Content}">
                             <StackPanel>
-                                <TextBlock Style="{ThemeResource Card-Title}" Text="Headline Typography" />
-                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Headlines text styles" />
+                                <TextBlock Style="{ThemeResource Card-Title}" Text="Display Typography" />
+                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Display text styles" />
                                 <TextBlock Style="{StaticResource Display-Large}" Text="Display Large" />
                                 <TextBlock Style="{StaticResource Display-Medium}" Text="Display Medium" />
                                 <TextBlock Style="{StaticResource Display-Small}" Text="Display Small" />
@@ -62,6 +62,18 @@
                                 <TextBlock Style="{StaticResource Body-Large}" Text="Body Large - Roboto Regular" />
                                 <TextBlock Style="{StaticResource Body-Medium}" Text="Body Medium - Roboto Regular" />
                                 <TextBlock Style="{StaticResource Body-Small}" Text="Body Small - Roboto Regular" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Style="{ThemeResource Card}">
+                        <Grid Style="{StaticResource Card-Content}">
+                            <StackPanel>
+                                <TextBlock Style="{ThemeResource Card-Title}" Text="Label Typography" />
+                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Label text styles" />
+                                <TextBlock Style="{StaticResource Label-Large}" Text="Label Large - Roboto Regular" />
+                                <TextBlock Style="{StaticResource Label-Medium}" Text="Label Medium - Roboto Regular" />
+                                <TextBlock Style="{StaticResource Label-Small}" Text="Label Small - Roboto Regular" />
                             </StackPanel>
                         </Grid>
                     </Grid>

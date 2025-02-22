@@ -1,0 +1,106 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:material="using:Uno.Material"
+    xmlns:toolkit="using:Uno.UI.Toolkit"
+    xmlns:um="using:Uno.Material">
+
+    <Thickness x:Key="PressedOpacity">0.12</Thickness>
+    <Thickness x:Key="ButtonContentMargin">8,0</Thickness>
+
+    <Style BasedOn="{ThemeResource Button-Primary}" TargetType="Button" />
+
+    <Style x:Key="Button-Primary" TargetType="Button">
+
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="MinHeight" Value="40" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Padding" Value="24,10" />
+
+        <Setter Property="Foreground" Value="{ThemeResource OnPrimaryColor}" />
+        <Setter Property="Background" Value="{ThemeResource PrimaryColor}" />
+
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid
+                        x:Name="Root"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <um:Ripple
+                            x:Name="Ripple"
+                            Padding="{TemplateBinding Padding}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            AutomationProperties.AccessibilityView="Raw"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Feedback="{TemplateBinding Foreground}"
+                            FeedbackOpacity="{StaticResource PressedOpacity}">
+
+                            <Grid>
+
+                                <ContentPresenter
+                                    x:Name="ContentPresenter"
+                                    Grid.Column="1"
+                                    Margin="{ThemeResource ButtonContentMargin}"
+                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    CharacterSpacing="{TemplateBinding CharacterSpacing}"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    ContentTransitions="{TemplateBinding ContentTransitions}"
+                                    FontFamily="{TemplateBinding FontFamily}"
+                                    FontSize="{TemplateBinding FontSize}"
+                                    FontWeight="{TemplateBinding FontWeight}" />
+                            </Grid>
+
+                        </um:Ripple>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+
+                                <VisualState x:Name="Normal" />
+
+                                <VisualState x:Name="Disabled">
+                                    <VisualState.Setters>
+                                        <Setter Target="Root.Background" Value="{ThemeResource OutlineVariantColor}" />
+                                        <Setter Target="Root.Opacity" Value="1" />
+                                        <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource OutlineColor}" />
+                                        <Setter Target="Root.BorderBrush" Value="{ThemeResource OutlineVariantColor}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style
+        x:Key="Button-Outline"
+        BasedOn="{StaticResource Button-Primary}"
+        TargetType="Button">
+        <Setter Property="Foreground" Value="{ThemeResource PrimaryColor}" />
+        <Setter Property="Background" Value="{ThemeResource SystemControlTransparentBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{ThemeResource OutlineColor}" />
+    </Style>
+
+    <Style
+        x:Key="Button-Tonal"
+        BasedOn="{StaticResource Button-Primary}"
+        TargetType="Button">
+        <Setter Property="Foreground" Value="{ThemeResource OnSecondaryContainerColor}" />
+        <Setter Property="Background" Value="{ThemeResource SecondaryContainerColor}" />
+    </Style>
+
+
+</ResourceDictionary>

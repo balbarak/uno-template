@@ -2,7 +2,6 @@ using Microsoft.UI;
 using Microsoft.UI.Dispatching;
 using UnoAppTemplate.Animations;
 using UnoAppTemplate.Controls;
-using UnoAppTemplate.Demo.Views;
 using UnoAppTemplate.Services;
 using Windows.UI.Core;
 
