@@ -16,84 +16,8 @@
             </Button>
         </StackPanel>
 
-        <local:Toaster
-            x:Name="PART_Toaster"
-            Show="True"
-            Text="Hello I am toaster message and text" />
+        <local:Toaster x:Name="PART_Toaster" Text="Hello I am toaster message and text" />
 
     </Grid>
 
-    <Page.Resources>
-        <Style TargetType="local:Toaster">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="local:Toaster">
-                        <Grid
-                            x:Name="PART_Root"
-                            Margin="24,64"
-                            Padding="16"
-                            VerticalAlignment="Bottom"
-                            Background="{ThemeResource SurfaceInverseColor}"
-                            CornerRadius="4">
-                            <!--<Grid.RenderTransform>
-                                <CompositeTransform x:Name="PART_Translate" TranslateY="-30" />
-                            </Grid.RenderTransform>-->
-                            <TextBlock
-                                Grid.Column="1"
-                                Foreground="{ThemeResource OnSurfaceInverseColor}"
-                                Text="{TemplateBinding Text}"
-                                TextWrapping="Wrap" />
-                            <VisualStateManager.VisualStateGroups>
-
-                                <VisualStateGroup x:Name="VisibleStates">
-
-                                    <VisualState x:Name="ShowState">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_Root" Storyboard.TargetProperty="Visibility">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
-                                            </ObjectAnimationUsingKeyFrames>
-
-                                            <DoubleAnimation
-                                                Storyboard.TargetName="PART_Root"
-                                                Storyboard.TargetProperty="Opacity"
-                                                From="0"
-                                                To="1"
-                                                Duration="00:00:0.25">
-                                                <DoubleAnimation.EasingFunction>
-                                                    <CubicEase EasingMode="EaseIn" />
-                                                </DoubleAnimation.EasingFunction>
-                                            </DoubleAnimation>
-
-                                        </Storyboard>
-
-                                    </VisualState>
-                                    <VisualState x:Name="HideState">
-                                        <Storyboard>
-
-
-                                            <DoubleAnimation
-                                                Storyboard.TargetName="PART_Root"
-                                                Storyboard.TargetProperty="Opacity"
-                                                From="1"
-                                                To="0"
-                                                Duration="00:00:0.25">
-                                                <DoubleAnimation.EasingFunction>
-                                                    <CubicEase EasingMode="EaseIn" />
-                                                </DoubleAnimation.EasingFunction>
-                                            </DoubleAnimation>
-
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_Root" Storyboard.TargetProperty="Visibility">
-                                                <DiscreteObjectKeyFrame KeyTime="00:00:0.25" Value="Collapsed" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                </VisualStateGroup>
-
-                            </VisualStateManager.VisualStateGroups>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Page.Resources>
 </Page>

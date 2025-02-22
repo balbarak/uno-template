@@ -21,5 +21,8 @@
     <FontFamily x:Key="Font-TajawalMedium">
         ms-appx:///Assets/Fonts/Tajawal-Medium.ttf#Tajawal
     </FontFamily>
+    <FontFamily x:Key="Font-MaterialIcons">
+        ms-appx:///Assets/Fonts/Material-Icons.otf#MaterialIcons
+    </FontFamily>
 
 </ResourceDictionary>

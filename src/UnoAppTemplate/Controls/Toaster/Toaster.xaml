@@ -7,7 +7,93 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:Toaster">
-                    <Grid Background="Red" />
+                    <Grid
+                        x:Name="PART_Root"
+                        Margin="24,64"
+                        Padding="16"
+                        VerticalAlignment="Bottom"
+                        Background="{ThemeResource SurfaceInverseColor}"
+                        CornerRadius="4"
+                        Visibility="Collapsed">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Foreground="{ThemeResource OnSurfaceInverseColor}"
+                            Text="{TemplateBinding Text}"
+                            TextWrapping="Wrap" />
+
+                        <Button
+                            x:Name="PART_CloseButton"
+                            Grid.Column="1"
+                            Width="40"
+                            Height="40"
+                            Margin="0"
+                            Padding="0"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            Command="{TemplateBinding CloseCommand}"
+                            CornerRadius="40"
+                            Foreground="{ThemeResource OnSurfaceInverseColor}">
+                            <FontIcon
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource Font-MaterialIcons}"
+                                FontSize="24"
+                                Foreground="{ThemeResource OnSurfaceInverseColor}"
+                                Glyph="&#xe5cd;" />
+
+                        </Button>
+
+                        <VisualStateManager.VisualStateGroups>
+
+                            <VisualStateGroup x:Name="VisibleStates">
+
+                                <VisualState x:Name="ShowState">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_Root" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+                                        </ObjectAnimationUsingKeyFrames>
+
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_Root"
+                                            Storyboard.TargetProperty="Opacity"
+                                            From="0"
+                                            To="1"
+                                            Duration="00:00:0.25">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseIn" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                    </Storyboard>
+
+                                </VisualState>
+                                <VisualState x:Name="HideState">
+                                    <Storyboard x:Name="PART_CloseStoryboard">
+
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_Root"
+                                            Storyboard.TargetProperty="Opacity"
+                                            From="1"
+                                            To="0"
+                                            Duration="00:00:0.25">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseIn" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_Root" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="00:00:0.25" Value="Collapsed" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
