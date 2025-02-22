@@ -14,7 +14,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <local:PageHeader Header="Welcome s" />
+        <local:PageHeader Header="Typography" />
 
         <Grid Grid.Row="1" Background="{ThemeResource SurfaceContainerLowColor}">
 
