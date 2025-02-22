@@ -66,6 +66,7 @@
                             Width="30"
                             Height="30"
                             x:Load="{TemplateBinding IsLoading}"
+                            Foreground="{TemplateBinding Foreground}"
                             IsActive="{TemplateBinding IsLoading}"
                             Visibility="{TemplateBinding IsLoading}" />
 
@@ -74,14 +75,6 @@
 
                                 <VisualState x:Name="Normal" />
 
-                                <VisualState x:Name="Disabled">
-                                    <VisualState.Setters>
-                                        <Setter Target="Root.Background" Value="{ThemeResource OutlineVariantColor}" />
-                                        <Setter Target="Root.Opacity" Value="1" />
-                                        <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource OutlineColor}" />
-                                        <Setter Target="Root.BorderBrush" Value="{ThemeResource OutlineVariantColor}" />
-                                    </VisualState.Setters>
-                                </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                     </Grid>
@@ -97,6 +90,17 @@
         TargetType="local:LoadingButton">
         <Setter Property="Foreground" Value="{ThemeResource OnSecondaryContainerColor}" />
         <Setter Property="Background" Value="{ThemeResource SecondaryContainerColor}" />
+
+    </Style>
+
+    <Style
+        x:Key="Button-LoadingOutline"
+        BasedOn="{StaticResource Button-Loading}"
+        TargetType="local:LoadingButton">
+        <Setter Property="Foreground" Value="{ThemeResource PrimaryColor}" />
+        <Setter Property="Background" Value="{ThemeResource SystemControlTransparentBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{ThemeResource OutlineColor}" />
 
     </Style>
 

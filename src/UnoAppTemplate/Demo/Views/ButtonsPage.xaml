@@ -74,6 +74,13 @@
                                         IsLoading="{x:Bind ViewModel.IsBusy, Mode=OneWay}"
                                         Style="{StaticResource Button-LoadingTonal}" />
 
+                                    <local:LoadingButton
+                                        HorizontalAlignment="Stretch"
+                                        Command="{x:Bind ViewModel.LoadCommand}"
+                                        Content="Loading Button Outline"
+                                        IsLoading="{x:Bind ViewModel.IsBusy, Mode=OneWay}"
+                                        Style="{StaticResource Button-LoadingOutline}" />
+
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
