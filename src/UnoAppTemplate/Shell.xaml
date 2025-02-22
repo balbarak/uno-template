@@ -61,7 +61,7 @@
             </SplitView.Content>
         </SplitView>
 
-        <local:Toaster />
+        <local:Toaster x:Name="PART_Toaster" />
     </Grid>
 
 </Page>

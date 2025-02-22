@@ -21,7 +21,7 @@
         <Setter Property="Foreground" Value="{ThemeResource OnPrimaryColor}" />
         <Setter Property="Background" Value="{ThemeResource PrimaryColor}" />
 
-        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
 
         <Setter Property="Template">
@@ -62,13 +62,17 @@
 
                         </um:Ripple>
 
-                        <ProgressRing
-                            Width="30"
-                            Height="30"
-                            x:Load="{TemplateBinding IsLoading}"
-                            Foreground="{TemplateBinding Foreground}"
-                            IsActive="{TemplateBinding IsLoading}"
-                            Visibility="{TemplateBinding IsLoading}" />
+                        <Grid Height="40" Visibility="{TemplateBinding IsLoading}">
+                            <ProgressRing
+                                x:Name="PART_ProgressRing"
+                                Width="30"
+                                Height="30"
+                                VerticalAlignment="Center"
+                                Foreground="{TemplateBinding Foreground}"
+                                IsActive="{TemplateBinding IsLoading}"
+                                Visibility="{TemplateBinding IsLoading}" />
+                        </Grid>
+
 
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">

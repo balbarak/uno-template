@@ -8,7 +8,7 @@
     <Thickness x:Key="PressedOpacity">0.12</Thickness>
     <Thickness x:Key="ButtonContentMargin">8,0</Thickness>
 
-    <Style BasedOn="{ThemeResource Button-Primary}" TargetType="Button" />
+    <Style BasedOn="{StaticResource Button-Primary}" TargetType="Button" />
 
     <Style x:Key="Button-Primary" TargetType="Button">
 

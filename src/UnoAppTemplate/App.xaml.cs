@@ -1,13 +1,9 @@
 global using System.Collections.Immutable;
-global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Hosting;
-global using Microsoft.Extensions.Localization;
 global using Microsoft.Extensions.Logging;
-global using Microsoft.Extensions.Options;
 global using UnoAppTemplate.Models;
-global using ApplicationExecutionState = Windows.ApplicationModel.Activation.ApplicationExecutionState;
 global using UnoAppTemplate.ViewModels;
 
 using Uno.Resizetizer;
@@ -16,7 +12,7 @@ using UnoAppTemplate.Demo.Views;
 namespace UnoAppTemplate;
 public partial class App : Application
 {
-    private static bool IS_DESING = true;
+    private static bool IS_DESING = false;
     public static Window? MainWindow { get; private set; }
     public static IHost? Host { get; private set; }
 

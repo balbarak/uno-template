@@ -38,4 +38,10 @@ public class NavigationService : INavigationService
         }
 
     }
+
+
+    public async Task ShowToaster(string msg)
+    {
+        await App.ContentHost.ShowToaster(msg);
+    }
 }

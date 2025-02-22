@@ -102,9 +102,9 @@ public sealed partial class Shell : Page
         PART_SplitView.IsPaneOpen = false;
     }
 
-    private void OnMenuButtonClick(object sender, RoutedEventArgs e)
+    public async Task ShowToaster(string msg)
     {
-        PART_SplitView.IsPaneOpen = true;
+        await PART_Toaster.ShowToaster(msg);
     }
 
     private void ClearStack()
@@ -173,7 +173,6 @@ public sealed partial class Shell : Page
             }
         }
     }
-
 }
 
 public record NavigationBag(UIElement Container, Page Content);

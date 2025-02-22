@@ -27,7 +27,10 @@
 
                                 <StackPanel Spacing="8">
 
-                                    <Button HorizontalAlignment="Stretch" Content="Show Toaster" />
+                                    <Button
+                                        HorizontalAlignment="Stretch"
+                                        Command="{x:Bind ViewModel.ShowToasterCommand}"
+                                        Content="Show Toaster" />
 
                                 </StackPanel>
                             </StackPanel>

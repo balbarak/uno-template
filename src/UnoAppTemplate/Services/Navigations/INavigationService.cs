@@ -9,4 +9,5 @@ namespace UnoAppTemplate.Services;
 public interface INavigationService
 {
     Task Navigate(string route, object data = null);
+    Task ShowToaster(string msg);
 }

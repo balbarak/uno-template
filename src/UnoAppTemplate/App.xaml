@@ -16,7 +16,7 @@
 
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <utum:MaterialToolkitTheme ColorOverrideSource="ms-appx:///Styles/ColorPaletteOverride.xaml">
-                    <!--  NOTE: You can override the default Roboto font by providing your font assets here.  -->
+
                     <utum:MaterialToolkitTheme.FontOverrideDictionary>
                         <ResourceDictionary>
                             <FontFamily x:Key="MaterialLightFontFamily">ms-appx:///Assets/Fonts/Roboto-Light.ttf#Roboto</FontFamily>
@@ -33,7 +33,6 @@
                 <ResourceDictionary Source="ms-appx:///Styles/Buttons.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <!--  Add resources here  -->
 
         </ResourceDictionary>
     </Application.Resources>
