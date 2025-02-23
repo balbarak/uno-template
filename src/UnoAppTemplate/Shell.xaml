@@ -51,6 +51,11 @@
                                 CommandParameter="{x:Bind app:RouteService.TYPOGRAPHY_PAGE}"
                                 Text="Typography" />
 
+                            <ctl:MenuItem
+                                Command="{x:Bind ViewModel.GoToPage}"
+                                CommandParameter="{x:Bind app:RouteService.SETTINGS_PAGE}"
+                                Text="Settings" />
+
                         </StackPanel>
                     </Grid>
 

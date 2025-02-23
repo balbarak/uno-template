@@ -24,5 +24,6 @@ public class Startup
         services.AddPage<TypographyViewModel, TypographyPage>(RouteService.TYPOGRAPHY_PAGE);
         services.AddPage<ButtonViewModel, ButtonsPage>(RouteService.BUTTONS_PAGE);
         services.AddPage<ThemeViewModel, ThemePage>(RouteService.THEME_PAGE);
+        services.AddPage<SettingsViewModel, SettingsPage>(RouteService.SETTINGS_PAGE);
     }
 }

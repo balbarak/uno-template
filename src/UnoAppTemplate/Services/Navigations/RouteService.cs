@@ -14,6 +14,7 @@ public class RouteService
     public const string BUTTONS_PAGE = "//buttons";
     public const string TYPOGRAPHY_PAGE = "//typography";
     public const string THEME_PAGE = "//theme";
+    public const string SETTINGS_PAGE = "//settings";
 
     static RouteService()
     {
