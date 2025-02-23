@@ -62,6 +62,7 @@
             </SplitView.Content>
         </SplitView>
 
+        <local:AlertModal x:Name="PART_Alert" />
         <local:Toaster x:Name="PART_Toaster" />
     </Grid>
 

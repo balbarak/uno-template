@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnoAppTemplate.Animations;
+using UnoAppTemplate.Controls;
 using UnoAppTemplate.Views;
 
 namespace UnoAppTemplate.Services;
@@ -39,9 +40,13 @@ public class NavigationService : INavigationService
 
     }
 
-
     public async Task ShowToaster(string msg)
     {
         await App.ContentHost.ShowToaster(msg);
+    }
+
+    public async Task ShowAlert(string title,string msg,AlertType type)
+    {
+        await App.ContentHost.ShowAlert(title, msg, type);
     }
 }

@@ -107,6 +107,11 @@ public sealed partial class Shell : Page
         await PART_Toaster.ShowToaster(msg);
     }
 
+    public async Task ShowAlert(string title,string msg,AlertType type)
+    {
+        await PART_Alert.ShowModal(title, msg, type);
+    }
+
     private void ClearStack()
     {
         _stack.Clear();

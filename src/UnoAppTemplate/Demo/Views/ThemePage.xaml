@@ -29,8 +29,13 @@
 
                                     <Button
                                         HorizontalAlignment="Stretch"
-                                        Command="{x:Bind ViewModel.ShowToasterCommand}"
-                                        Content="Show Toaster" />
+                                        Command="{x:Bind ViewModel.ShowSuccessAlertCommand}"
+                                        Content="Show Success Alert" />
+
+                                    <Button
+                                        HorizontalAlignment="Stretch"
+                                        Command="{x:Bind ViewModel.ShowErrorAlertCommand}"
+                                        Content="Show Error Alert" />
 
                                 </StackPanel>
                             </StackPanel>
