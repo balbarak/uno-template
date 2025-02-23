@@ -41,7 +41,7 @@
                         <Grid
                             x:Name="PART_Root"
                             Background="Transparent"
-                            Visibility="Visible">
+                            Visibility="Collapsed">
                             <Button
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
@@ -79,7 +79,8 @@
                                     <local:LottiePlayer
                                         x:Name="PART_LottiePlayer"
                                         Height="110"
-                                        Source="ms-appx:///Assets/Lottie/success.json" />
+                                        Source="ms-appx:///Assets/Lottie/success.json"
+                                        Visibility="Collapsed" />
                                 </Grid>
 
                                 <Grid Grid.Row="1" Padding="24">
@@ -87,16 +88,18 @@
                                     <StackPanel Spacing="24">
 
                                         <TextBlock
+                                            x:Name="PART_Title"
                                             HorizontalAlignment="Center"
                                             Foreground="{ThemeResource OnSurfaceColor}"
                                             Style="{StaticResource Headline-Small}"
-                                            Text="Alert Title"
+                                            Text="{TemplateBinding Title}"
                                             TextWrapping="Wrap" />
 
                                         <TextBlock
+                                            x:Name="PART_Message"
                                             Foreground="{ThemeResource OnSurfaceVariantColor}"
                                             Style="{StaticResource Body-Medium}"
-                                            Text="This is an error message to display erros and alert for some text"
+                                            Text="{TemplateBinding Message}"
                                             TextWrapping="Wrap" />
 
                                     </StackPanel>
@@ -113,6 +116,7 @@
                                 </Grid>
 
                             </Grid>
+
 
                             <VisualStateManager.VisualStateGroups>
 
@@ -188,7 +192,20 @@
                                     <VisualState x:Name="ErrorState">
                                         <VisualState.Setters>
                                             <Setter Target="PART_Content.Background" Value="{ThemeResource ErrorContainerColor}" />
-                                            <Setter Target="PART_Content.Background" Value="{ThemeResource ErrorContainerColor}" />
+                                            <Setter Target="PART_Title.Foreground" Value="{ThemeResource OnErrorContainerColor}" />
+                                            <Setter Target="PART_Message.Foreground" Value="{ThemeResource OnErrorContainerColor}" />
+                                            <Setter Target="PART_LottiePlayer.Visibility" Value="Visible" />
+                                            <Setter Target="PART_LottiePlayer.Source" Value="ms-appx:///Assets/Lottie/error.json" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+
+                                    <VisualState x:Name="SuccessState">
+                                        <VisualState.Setters>
+                                            <Setter Target="PART_Content.Background" Value="{ThemeResource SurfaceContainerHighColor}" />
+                                            <Setter Target="PART_Title.Foreground" Value="{ThemeResource OnSurfaceColor}" />
+                                            <Setter Target="PART_Message.Foreground" Value="{ThemeResource OnSurfaceVariantColor}" />
+                                            <Setter Target="PART_LottiePlayer.Visibility" Value="Visible" />
+                                            <Setter Target="PART_LottiePlayer.Source" Value="ms-appx:///Assets/Lottie/success.json" />
                                         </VisualState.Setters>
                                     </VisualState>
                                 </VisualStateGroup>

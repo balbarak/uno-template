@@ -77,7 +77,7 @@ public partial class AlertModal : Control
 
     }
 
-    public async Task ShowModal(string title,string msg,AlertType type = AlertType.Brand)
+    public async Task ShowModal(string title, string msg, AlertType type = AlertType.Brand)
     {
         await _slim.WaitAsync();
 
@@ -88,8 +88,8 @@ public partial class AlertModal : Control
 
         _ctk = new TaskCompletionSource();
 
-        VisualStateManager.GoToState(this,"ShowState", true);
-        
+        VisualStateManager.GoToState(this, "ShowState", true);
+
         await _lottiePlayer.Play();
 
         await _ctk.Task;
@@ -104,11 +104,10 @@ public partial class AlertModal : Control
     {
         switch (type)
         {
-            case AlertType.Brand:
-                break;
             case AlertType.Success:
-                break;
-            case AlertType.Warning:
+
+                VisualStateManager.GoToState(this, "SuccessState", false);
+
                 break;
             case AlertType.Error:
 
@@ -116,6 +115,9 @@ public partial class AlertModal : Control
 
                 break;
             default:
+
+                VisualStateManager.GoToState(this, "NormalState", false);
+
                 break;
         }
 

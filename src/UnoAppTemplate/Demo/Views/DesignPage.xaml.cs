@@ -40,6 +40,6 @@ public sealed partial class DesignPage : Page
 
     private async void CloseModal(object sender, RoutedEventArgs e)
     {
-        await PART_Modal.ShowModal("ff", "helo",Controls.AlertType.Error);
+        await PART_Modal.ShowModal("Error Modal", "This is error moadal",Controls.AlertType.Error);
     }
 }
