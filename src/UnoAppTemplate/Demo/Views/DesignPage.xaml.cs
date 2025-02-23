@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,6 +12,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System.Preview;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,4 +26,11 @@ public sealed partial class DesignPage : Page
     {
         this.InitializeComponent();
     }
+   
+
+    protected override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
+    }
+
 }

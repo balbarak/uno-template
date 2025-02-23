@@ -36,6 +36,74 @@
                             </StackPanel>
                         </Grid>
                     </Grid>
+                    <Grid Style="{ThemeResource Card}">
+                        <Grid Style="{StaticResource Card-Content}">
+                            <StackPanel>
+                                <TextBlock Style="{ThemeResource Card-Title}" Text="Colors" />
+                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Colors list" />
+
+                                <StackPanel Spacing="8">
+
+                                    <Border
+                                        Padding="16"
+                                        Background="{ThemeResource PrimaryColor}"
+                                        CornerRadius="8">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnPrimaryColor}">Primary Color</TextBlock>
+                                    </Border>
+
+                                    <Border
+                                        Padding="16"
+                                        Background="{ThemeResource SecondaryColor}"
+                                        CornerRadius="8">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnSecondaryColor}">Secondary Color</TextBlock>
+                                    </Border>
+
+                                    <Border
+                                        Padding="16"
+                                        Background="{ThemeResource PrimaryContainerColor}"
+                                        CornerRadius="8">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnPrimaryContainerColor}">Primary Container Color</TextBlock>
+                                    </Border>
+
+                                    <Border
+                                        Padding="16"
+                                        Background="{ThemeResource SecondaryContainerColor}"
+                                        CornerRadius="8">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnSecondaryContainerColor}">Secondary Container Color</TextBlock>
+                                    </Border>
+
+                                    <Border
+                                        Padding="16"
+                                        Background="{ThemeResource ErrorColor}"
+                                        CornerRadius="8">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnErrorColor}">Error Color</TextBlock>
+                                    </Border>
+
+                                    <Border
+                                        Padding="16"
+                                        Background="{ThemeResource ErrorContainerColor}"
+                                        CornerRadius="8">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnErrorContainerColor}">Error Container Color</TextBlock>
+                                    </Border>
+
+                                    <Border
+                                        Padding="16"
+                                        Background="{ThemeResource TertiaryColor}"
+                                        CornerRadius="8">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnTertiaryColor}">Tertiary Color</TextBlock>
+                                    </Border>
+
+                                    <Border
+                                        Padding="16"
+                                        Background="{ThemeResource TertiaryContainerColor}"
+                                        CornerRadius="8">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnTertiaryContainerColor}">Tertiary Container Color</TextBlock>
+                                    </Border>
+
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
 
                 </StackPanel>
             </ScrollViewer>
