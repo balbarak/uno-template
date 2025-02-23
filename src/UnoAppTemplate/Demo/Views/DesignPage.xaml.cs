@@ -33,4 +33,13 @@ public sealed partial class DesignPage : Page
         base.OnApplyTemplate();
     }
 
+    private async void Button_Click(object sender, RoutedEventArgs e)
+    {
+        await PART_Modal.ShowModal("ff", "helo");
+    }
+
+    private async void CloseModal(object sender, RoutedEventArgs e)
+    {
+        await PART_Modal.ShowModal("ff", "helo",Controls.AlertType.Error);
+    }
 }

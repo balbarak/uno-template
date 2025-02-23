@@ -9,6 +9,8 @@
         <ResourceDictionary Source="ms-appx:///Controls/RippleButton/RippleButton.xaml" />
         <ResourceDictionary Source="ms-appx:///Controls/LoadingButton/LoadingButton.xaml" />
         <ResourceDictionary Source="ms-appx:///Controls/Toaster/Toaster.xaml" />
+        <ResourceDictionary Source="ms-appx:///Controls/AlertModal/AlertModal.xaml" />
+        <ResourceDictionary Source="ms-appx:///Controls/LottiePlayer/LottiePlayer.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

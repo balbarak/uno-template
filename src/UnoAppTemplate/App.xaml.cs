@@ -12,7 +12,7 @@ using UnoAppTemplate.Demo.Views;
 namespace UnoAppTemplate;
 public partial class App : Application
 {
-    private static bool IS_DESING = false;
+    private static bool IS_DESING = true;
     public static Window? MainWindow { get; private set; }
     public static IHost? Host { get; private set; }
 

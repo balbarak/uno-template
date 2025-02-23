@@ -18,16 +18,17 @@
     <Description>UnoAppTemplate powered by Uno Platform.</Description>
  
     <UnoFeatures>
-      Material;
-      Dsp;
-      Hosting;
-      Toolkit;
-      Logging;
-      Mvvm;
-      Configuration;
-      Localization;
-      ThemeService;
-      Skia;
+        Material;
+        Dsp;
+        Hosting;
+        Toolkit;
+        Logging;
+        Mvvm;
+        Configuration;
+        Localization;
+        ThemeService;
+        Skia;
+        Lottie;
     </UnoFeatures>
   </PropertyGroup>
   <ItemGroup>
@@ -82,6 +83,17 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Demo\Views\DesignPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\AlertModal\AlertModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\LottiePlayer\LottiePlayer.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

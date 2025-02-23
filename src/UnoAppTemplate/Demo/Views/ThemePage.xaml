@@ -22,6 +22,24 @@
                     <Grid Style="{ThemeResource Card}">
                         <Grid Style="{StaticResource Card-Content}">
                             <StackPanel>
+                                <TextBlock Style="{ThemeResource Card-Title}" Text="Alert" />
+                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Type of alerts" />
+
+                                <StackPanel Spacing="8">
+
+                                    <Button
+                                        HorizontalAlignment="Stretch"
+                                        Command="{x:Bind ViewModel.ShowToasterCommand}"
+                                        Content="Show Toaster" />
+
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Style="{ThemeResource Card}">
+                        <Grid Style="{StaticResource Card-Content}">
+                            <StackPanel>
                                 <TextBlock Style="{ThemeResource Card-Title}" Text="Toaster" />
                                 <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Toaster styles and triggers" />
 
@@ -47,56 +65,56 @@
                                     <Border
                                         Padding="16"
                                         Background="{ThemeResource PrimaryColor}"
-                                        CornerRadius="8">
+                                        CornerRadius="2">
                                         <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnPrimaryColor}">Primary Color</TextBlock>
                                     </Border>
 
                                     <Border
                                         Padding="16"
                                         Background="{ThemeResource SecondaryColor}"
-                                        CornerRadius="8">
+                                        CornerRadius="2">
                                         <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnSecondaryColor}">Secondary Color</TextBlock>
                                     </Border>
 
                                     <Border
                                         Padding="16"
                                         Background="{ThemeResource PrimaryContainerColor}"
-                                        CornerRadius="8">
+                                        CornerRadius="2">
                                         <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnPrimaryContainerColor}">Primary Container Color</TextBlock>
                                     </Border>
 
                                     <Border
                                         Padding="16"
                                         Background="{ThemeResource SecondaryContainerColor}"
-                                        CornerRadius="8">
+                                        CornerRadius="2">
                                         <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnSecondaryContainerColor}">Secondary Container Color</TextBlock>
                                     </Border>
 
                                     <Border
                                         Padding="16"
                                         Background="{ThemeResource ErrorColor}"
-                                        CornerRadius="8">
+                                        CornerRadius="2">
                                         <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnErrorColor}">Error Color</TextBlock>
                                     </Border>
 
                                     <Border
                                         Padding="16"
                                         Background="{ThemeResource ErrorContainerColor}"
-                                        CornerRadius="8">
+                                        CornerRadius="2">
                                         <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnErrorContainerColor}">Error Container Color</TextBlock>
                                     </Border>
 
                                     <Border
                                         Padding="16"
                                         Background="{ThemeResource TertiaryColor}"
-                                        CornerRadius="8">
+                                        CornerRadius="2">
                                         <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnTertiaryColor}">Tertiary Color</TextBlock>
                                     </Border>
 
                                     <Border
                                         Padding="16"
                                         Background="{ThemeResource TertiaryContainerColor}"
-                                        CornerRadius="8">
+                                        CornerRadius="2">
                                         <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource OnTertiaryContainerColor}">Tertiary Container Color</TextBlock>
                                     </Border>
 

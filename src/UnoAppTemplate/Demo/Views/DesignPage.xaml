@@ -4,54 +4,199 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:UnoAppTemplate.Controls"
+    xmlns:lottie="using:CommunityToolkit.WinUI.Lottie"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:winui="using:Microsoft.UI.Xaml.Controls"
     local:ElmentDirection.Flow="RightToLeft"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
+    <Grid>
 
-    <Grid Padding="26">
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <local:PageHeader Header="Welcome" />
-        <Grid
-            x:Name="RootGrid"
-            Grid.Row="1"
-            Background="Gray"
-            FlowDirection="RightToLeft">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <Border
-                Padding="20"
+        <StackPanel
+            Padding="24"
+            Orientation="Vertical"
+            Spacing="8">
+            <Button
                 VerticalAlignment="Top"
-                Background="Red">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">1</TextBlock>
-            </Border>
-
-            <Border
-                Grid.Column="1"
-                Padding="20"
+                Click="Button_Click"
+                Content="Show Modal" />
+            <Button
                 VerticalAlignment="Top"
-                Background="Yellow">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">2</TextBlock>
-            </Border>
+                Click="CloseModal"
+                Content="Close Modal" />
 
-            <Border
-                Grid.Column="2"
-                Padding="20"
-                VerticalAlignment="Top"
-                Background="Green">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">3</TextBlock>
-            </Border>
 
-        </Grid>
+            <local:LottiePlayer x:Name="PART_LottiePlayer" Source="ms-appx:///Assets/Lottie/success.json" />
+
+        </StackPanel>
+        <local:AlertModal x:Name="PART_Modal" IsBackdrop="False" />
     </Grid>
 
+    <Page.Resources>
+        <Style TargetType="local:AlertModal">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="local:AlertModal">
+                        <Grid
+                            x:Name="PART_Root"
+                            Background="Transparent"
+                            Visibility="Visible">
+                            <Button
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Command="{TemplateBinding CloseCommand}"
+                                IsHitTestVisible="{TemplateBinding IsBackdrop}">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Rectangle
+                                            x:Name="PART_Backdrop"
+                                            Fill="Black"
+                                            Opacity=".4" />
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+                            <Grid
+                                x:Name="PART_Content"
+                                MinHeight="200"
+                                Margin="24"
+                                VerticalAlignment="Center"
+                                Background="{ThemeResource SurfaceContainerHighColor}"
+                                CornerRadius="28">
+                                <Grid.RenderTransform>
+                                    <!--<CompositeTransform x:Name="PART_ContentTranslate" TranslateY="0" />-->
+                                    <CompositeTransform x:Name="PART_ContentTranslate" TranslateY="0" />
+                                </Grid.RenderTransform>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Grid>
+                                    <local:LottiePlayer
+                                        x:Name="PART_LottiePlayer"
+                                        Height="110"
+                                        Source="ms-appx:///Assets/Lottie/success.json" />
+                                </Grid>
+
+                                <Grid Grid.Row="1" Padding="24">
+
+                                    <StackPanel Spacing="24">
+
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            Foreground="{ThemeResource OnSurfaceColor}"
+                                            Style="{StaticResource Headline-Small}"
+                                            Text="Alert Title"
+                                            TextWrapping="Wrap" />
+
+                                        <TextBlock
+                                            Foreground="{ThemeResource OnSurfaceVariantColor}"
+                                            Style="{StaticResource Body-Medium}"
+                                            Text="This is an error message to display erros and alert for some text"
+                                            TextWrapping="Wrap" />
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                                <Grid Grid.Row="2" Padding="24">
+                                    <Button
+                                        x:Name="PART_CloseButton"
+                                        HorizontalAlignment="Right"
+                                        Command="{TemplateBinding CloseCommand}"
+                                        Content="{TemplateBinding CloseText}"
+                                        Style="{StaticResource Button-Outline}" />
+                                </Grid>
+
+                            </Grid>
+
+                            <VisualStateManager.VisualStateGroups>
+
+                                <VisualStateGroup x:Name="VisibleStates">
+
+                                    <VisualState x:Name="ShowState">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_Root" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="00:00:0.0" Value="Visible" />
+                                            </ObjectAnimationUsingKeyFrames>
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="PART_Root"
+                                                Storyboard.TargetProperty="Opacity"
+                                                From="0"
+                                                To="1"
+                                                Duration="00:00:0.25">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <CubicEase EasingMode="EaseIn" />
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="PART_ContentTranslate"
+                                                Storyboard.TargetProperty="TranslateY"
+                                                From="800"
+                                                To="0"
+                                                Duration="00:00:0.25">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <CubicEase EasingMode="EaseInOut" />
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+
+                                    </VisualState>
+
+                                    <VisualState x:Name="HideState">
+                                        <Storyboard x:Name="PART_CloseStoryboard">
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="PART_Root"
+                                                Storyboard.TargetProperty="Opacity"
+                                                From="1"
+                                                To="0"
+                                                Duration="00:00:0.25">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <CubicEase EasingMode="EaseIn" />
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="PART_ContentTranslate"
+                                                Storyboard.TargetProperty="TranslateY"
+                                                From="0"
+                                                To="-800"
+                                                Duration="00:00:0.25">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <CubicEase EasingMode="EaseInOut" />
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_Root" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="00:00:0.25" Value="Collapsed" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+
+                                </VisualStateGroup>
+
+                                <VisualStateGroup x:Name="AlertStates">
+
+                                    <VisualState x:Name="NormalState" />
+
+                                    <VisualState x:Name="ErrorState">
+                                        <VisualState.Setters>
+                                            <Setter Target="PART_Content.Background" Value="{ThemeResource ErrorContainerColor}" />
+                                            <Setter Target="PART_Content.Background" Value="{ThemeResource ErrorContainerColor}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 </Page>
