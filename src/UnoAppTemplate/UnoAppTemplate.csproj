@@ -32,6 +32,19 @@
     </UnoFeatures>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="Resx\CommonText.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CommonText.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resx\CommonText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommonText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Views\HomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

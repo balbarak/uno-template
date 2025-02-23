@@ -68,14 +68,15 @@ public partial class ElmentDirection : DependencyObject
             var childs = GetAllChildControls(pageDp);
 
             grids = childs.Where(a => a is Grid).Cast<Grid>().ToList();
+            textBlocks = childs.Where(a => a is TextBlock).Cast<TextBlock>().ToList();
         }
 
         grids.ForEach(ReverseGridChilds);
-
+        textBlocks.ForEach(ReverseTextBlock);
+        
+        //textBoxes.ForEach(ReverseTextBoxes);
         //stackPanels.ForEach(ReverseStackPanel);
         //frameWorkElements.ForEach(ReverseMarginsAndHorizontalAlignment);
-        //textBoxes.ForEach(ReverseTextBoxes);
-        //textBlocks.ForEach(ReverseTextBlock);
         //controls.ForEach(ReversePadding);
     }
 
@@ -226,13 +227,13 @@ public partial class ElmentDirection : DependencyObject
             if (isLeft)
             {
                 text.TextDirection = Android.Views.TextDirection.Rtl;
-                //text.HorizontalAlignment = HorizontalAlignment.Right;
+                text.HorizontalAlignment = HorizontalAlignment.Right;
 
             }
             else if (isRight)
             {
                 text.TextDirection = Android.Views.TextDirection.Ltr;
-                //text.HorizontalAlignment = HorizontalAlignment.Left;
+                text.HorizontalAlignment = HorizontalAlignment.Left;
             }
 
 #else

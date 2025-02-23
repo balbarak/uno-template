@@ -43,6 +43,8 @@ public sealed partial class Shell : Page
 
         DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Normal, async () =>
         {
+            SetElementDirection(page);
+
             SetActiveMenu();
 
             ClearStack();
@@ -57,6 +59,8 @@ public sealed partial class Shell : Page
     {
         DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Normal, async () =>
         {
+            SetElementDirection(page);
+
             CanGoBack = true;
 
             InsertPage(page);
@@ -177,6 +181,13 @@ public sealed partial class Shell : Page
                 item.IsSelected = false;
             }
         }
+    }
+
+    private void SetElementDirection(Page page)
+    {
+        var currentFlow = ElmentDirection.GetFlow(this);
+
+        ElmentDirection.SetFlow(page, currentFlow);
     }
 }
 

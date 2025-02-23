@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:UnoAppTemplate.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:Uno.UI.Toolkit"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -19,6 +20,44 @@
         <Grid Grid.Row="1" Background="{ThemeResource SurfaceContainerLowColor}">
             <ScrollViewer>
                 <StackPanel Margin="{StaticResource Container-Thickness}" Spacing="16">
+
+                    <Grid Style="{ThemeResource Card}">
+                        <Grid Style="{StaticResource Card-Content}">
+                            <StackPanel>
+                                <TextBlock Style="{ThemeResource Card-Title}" Text="Sheet" />
+                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Bottom sheet using flyout" />
+
+                                <StackPanel Spacing="8">
+
+                                    <Button HorizontalAlignment="Stretch" Content="Open Bottom Sheet">
+
+                                        <Button.Flyout>
+                                            <Flyout Placement="Full">
+                                                <Flyout.FlyoutPresenterStyle>
+                                                    <Style BasedOn="{StaticResource BottomDrawerFlyoutPresenterStyle}" TargetType="FlyoutPresenter">
+                                                        <Setter Property="CornerRadius" Value="24,24,0,0" />
+                                                    </Style>
+                                                </Flyout.FlyoutPresenterStyle>
+
+
+                                                <Border
+                                                    Padding="24"
+                                                    toolkit:VisibleBoundsPadding.PaddingMask="All"
+                                                    Background="{ThemeResource SurfaceContainerHighestColor}">
+                                                    <StackPanel>
+                                                        <TextBlock Text="text" />
+                                                        <Button Content="button" />
+                                                    </StackPanel>
+                                                </Border>
+                                            </Flyout>
+                                        </Button.Flyout>
+                                    </Button>
+
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
                     <Grid Style="{ThemeResource Card}">
                         <Grid Style="{StaticResource Card-Content}">
                             <StackPanel>
