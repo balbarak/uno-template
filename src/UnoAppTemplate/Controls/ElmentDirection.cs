@@ -13,10 +13,10 @@ public enum ElementFlowDirection
     RightToLeft
 }
 
-public partial class ElmentDirection : DependencyObject
+public partial class ElementDirection : DependencyObject
 {
     public static readonly DependencyProperty FlowProperty =
-          DependencyProperty.RegisterAttached("Flow", typeof(ElementFlowDirection), typeof(ElmentDirection), new PropertyMetadata(ElementFlowDirection.LeftToRight, OnFlowChanged));
+          DependencyProperty.RegisterAttached("Flow", typeof(ElementFlowDirection), typeof(ElementDirection), new PropertyMetadata(ElementFlowDirection.LeftToRight, OnFlowChanged));
 
 
     public static void SetFlow(UIElement element, ElementFlowDirection value)
@@ -69,15 +69,17 @@ public partial class ElmentDirection : DependencyObject
 
             grids = childs.Where(a => a is Grid).Cast<Grid>().ToList();
             textBlocks = childs.Where(a => a is TextBlock).Cast<TextBlock>().ToList();
+            frameWorkElements = childs.Where(a => a is FrameworkElement).Cast<FrameworkElement>().ToList();
+            controls = childs.Where(a => a is Control).Cast<Control>().ToList();
         }
 
         grids.ForEach(ReverseGridChilds);
+        frameWorkElements.ForEach(ReverseMarginsAndHorizontalAlignment);
         textBlocks.ForEach(ReverseTextBlock);
-        
+        controls.ForEach(ReversePadding);
+
         //textBoxes.ForEach(ReverseTextBoxes);
         //stackPanels.ForEach(ReverseStackPanel);
-        //frameWorkElements.ForEach(ReverseMarginsAndHorizontalAlignment);
-        //controls.ForEach(ReversePadding);
     }
 
     private static void ReverseGridChilds(Grid grid)
@@ -216,6 +218,9 @@ public partial class ElmentDirection : DependencyObject
 
     private static void ReverseTextBlock(TextBlock text)
     {
+        if (text.HorizontalAlignment == HorizontalAlignment.Center)
+            return;
+
         var textAlignment = text.TextAlignment;
 
         var isLeft = textAlignment == TextAlignment.Left;

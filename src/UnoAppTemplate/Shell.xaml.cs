@@ -35,6 +35,16 @@ public sealed partial class Shell : Page
     {
         base.OnApplyTemplate();
 
+        var dir = ElementDirection.GetFlow(this);
+
+        if (dir == ElementFlowDirection.RightToLeft)
+        {
+            PART_SplitView.PanePlacement = SplitViewPanePlacement.Right;
+        }
+        else
+        {
+            PART_SplitView.PanePlacement = SplitViewPanePlacement.Left;
+        }
     }
 
     public void Navigate(Page page, PageAnimationType animationType = PageAnimationType.None)
@@ -185,9 +195,9 @@ public sealed partial class Shell : Page
 
     private void SetElementDirection(Page page)
     {
-        var currentFlow = ElmentDirection.GetFlow(this);
+        var currentFlow = ElementDirection.GetFlow(this);
 
-        ElmentDirection.SetFlow(page, currentFlow);
+        ElementDirection.SetFlow(page, currentFlow);
     }
 }
 

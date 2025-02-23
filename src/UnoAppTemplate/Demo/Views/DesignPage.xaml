@@ -7,7 +7,7 @@
     xmlns:lottie="using:CommunityToolkit.WinUI.Lottie"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
-    local:ElmentDirection.Flow="RightToLeft"
+    local:ElementDirection.Flow="RightToLeft"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -26,7 +26,10 @@
                 Click="CloseModal"
                 Content="Close Modal" />
 
-            <Button Click="ShowNoTitleModal" Content="Show Modal No Message" Style="{StaticResource Button-Label}" />
+            <Button
+                Click="ShowNoTitleModal"
+                Content="Show Modal No Message"
+                Style="{StaticResource Button-Label}" />
 
         </StackPanel>
         <local:AlertModal x:Name="PART_Modal" IsBackdrop="False" />
