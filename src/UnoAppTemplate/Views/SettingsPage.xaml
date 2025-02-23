@@ -5,6 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:UnoAppTemplate.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resx="using:UnoAppTemplate.Resx"
+    xmlns:toolkit="using:Uno.UI.Toolkit"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -15,5 +17,10 @@
         </Grid.RowDefinitions>
 
         <local:PageHeader Header="Settings" />
+
+
+        <Grid Grid.Row="1" Margin="{StaticResource Container-Thickness}">
+            <StackPanel Spacing="8" />
+        </Grid>
     </Grid>
 </Page>

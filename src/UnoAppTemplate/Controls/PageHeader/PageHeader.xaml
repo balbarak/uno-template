@@ -47,6 +47,7 @@
         <ContentPresenter
             x:Name="PART_Content"
             Grid.Column="1"
+            HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Content="{x:Bind Header, Mode=OneWay}"
             FontFamily="{StaticResource tajawal}"

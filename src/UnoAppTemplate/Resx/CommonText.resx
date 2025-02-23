@@ -100,4 +100,19 @@
   <data name="Ok" xml:space="preserve">
     <value>موافق</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>اعدادات</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="Buttons" xml:space="preserve">
+    <value>الازرار</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>اللغة</value>
+  </data>
+  <data name="Language_Desc" xml:space="preserve">
+    <value>تغيير لغة واجهات التطبيق</value>
+  </data>
 </root>

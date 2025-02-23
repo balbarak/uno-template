@@ -46,4 +46,33 @@
         <Setter Property="TextWrapping" Value="Wrap" />
 
     </Style>
+
+    <Style x:Key="FontIcon-Material" TargetType="FontIcon">
+        <Setter Property="FontFamily" Value="ms-appx:///Assets/Fonts/Material-Icons.otf#" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontWeight" Value="ExtraLight" />
+    </Style>
+
+    <Style
+        x:Key="Chevron"
+        BasedOn="{StaticResource FontIcon-Material}"
+        TargetType="FontIcon">
+        <Setter Property="Glyph" Value="&#xe5e1;" />
+    </Style>
+
+    <Style
+        x:Key="ChevronLeft"
+        BasedOn="{StaticResource FontIcon-Material}"
+        TargetType="FontIcon">
+        <Setter Property="Glyph" Value="&#xe5e0;" />
+    </Style>
+
+    <Style
+        x:Key="ChevronRight"
+        BasedOn="{StaticResource FontIcon-Material}"
+        TargetType="FontIcon">
+        <Setter Property="Glyph" Value="&#xe5e1;" />
+    </Style>
+
+
 </ResourceDictionary>
