@@ -41,5 +41,12 @@ public sealed partial class DesignPage : Page
     private async void CloseModal(object sender, RoutedEventArgs e)
     {
         await PART_Modal.ShowModal("Error Modal", "This is error moadal",Controls.AlertType.Error);
+        await PART_Modal.ShowModal("Success Modal", "This is success moadal",Controls.AlertType.Success);
+    }
+
+    private async void ShowNoTitleModal(object sender, RoutedEventArgs e)
+    {
+        await PART_Modal.ShowModal("Success Modal", null, Controls.AlertType.Success);
+
     }
 }

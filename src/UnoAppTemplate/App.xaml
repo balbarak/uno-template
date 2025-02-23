@@ -10,6 +10,7 @@
 
             <helpers:InvertedBooleanConverter x:Name="InvertedBooleanConverter" />
             <helpers:EmptyStringToTrueConverter x:Name="EmptyStringToTrueConverter" />
+            <helpers:EmptyStringToFalseConverter x:Name="EmptyStringToFalseConverter" />
 
             <ResourceDictionary.MergedDictionaries>
                 <!--  Load WinUI resources  -->

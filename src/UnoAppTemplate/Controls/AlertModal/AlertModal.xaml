@@ -7,7 +7,10 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:AlertModal">
-                    <Grid x:Name="PART_Root" Visibility="Collapsed">
+                    <Grid
+                        x:Name="PART_Root"
+                        Background="Transparent"
+                        Visibility="Collapsed">
                         <Button
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
@@ -24,13 +27,15 @@
                         </Button>
 
                         <Grid
+                            x:Name="PART_Content"
                             MinHeight="200"
                             Margin="24"
+                            Padding="24"
                             VerticalAlignment="Center"
-                            Background="{ThemeResource SurfaceColor}"
-                            CornerRadius="8">
+                            Background="{ThemeResource SurfaceContainerHighColor}"
+                            CornerRadius="28">
                             <Grid.RenderTransform>
-                                <CompositeTransform x:Name="PART_ContentTranslate" TranslateY="800" />
+                                <CompositeTransform x:Name="PART_ContentTranslate" TranslateY="-800" />
                             </Grid.RenderTransform>
 
                             <Grid.RowDefinitions>
@@ -39,44 +44,51 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <Grid
-                                x:Name="PART_Top"
-                                Padding="16,4"
-                                Background="{ThemeResource SurfaceContainerHighestColor}">
-                                <FontIcon
-                                    x:Name="PART_Icon"
-                                    FontFamily="{StaticResource material-icon}"
-                                    FontSize="58"
-                                    Foreground="{ThemeResource PrimaryColor}"
-                                    Glyph="&#xe88e;" />
+                            <Grid>
+                                <local:LottiePlayer
+                                    x:Name="PART_LottiePlayer"
+                                    Height="56"
+                                    Margin="0,0,0,16"
+                                    Source="ms-appx:///Assets/Lottie/success.json"
+                                    Visibility="Collapsed" />
                             </Grid>
 
-                            <Grid Grid.Row="1" Padding="16,24">
-                                <StackPanel Spacing="8">
+                            <Grid Grid.Row="1">
+
+                                <StackPanel Spacing="16">
+
                                     <TextBlock
-                                        HorizontalAlignment="Right"
+                                        x:Name="PART_Title"
+                                        HorizontalAlignment="Center"
                                         Foreground="{ThemeResource OnSurfaceColor}"
-                                        Style="{StaticResource TitleLarge}"
-                                        Text="{TemplateBinding Title}" />
-                                    <TextBlock
-                                        HorizontalAlignment="Right"
-                                        Foreground="{ThemeResource OnSurfaceColor}"
-                                        LineHeight="24"
-                                        Text="{TemplateBinding Message}"
+                                        Style="{StaticResource Headline-Small}"
+                                        Text="{TemplateBinding Title}"
                                         TextWrapping="Wrap" />
+
+                                    <TextBlock
+                                        x:Name="PART_Message"
+                                        Foreground="{ThemeResource OnSurfaceVariantColor}"
+                                        Style="{StaticResource Body-Medium}"
+                                        Text="{TemplateBinding Message}"
+                                        TextWrapping="Wrap"
+                                        Visibility="{Binding Message, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource EmptyStringToFalseConverter}}" />
+
                                 </StackPanel>
 
                             </Grid>
 
-                            <Grid Grid.Row="2" Padding="16,0,16,24">
+                            <Grid Grid.Row="2" Padding="0,24,0,0">
                                 <Button
                                     x:Name="PART_CloseButton"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
                                     Command="{TemplateBinding CloseCommand}"
                                     Content="{TemplateBinding CloseText}"
-                                    Style="{StaticResource PrimaryButton}" />
+                                    Style="{StaticResource Button-Label}" />
                             </Grid>
 
                         </Grid>
+
                         <VisualStateManager.VisualStateGroups>
 
                             <VisualStateGroup x:Name="VisibleStates">
@@ -113,7 +125,7 @@
                                 </VisualState>
 
                                 <VisualState x:Name="HideState">
-                                    <Storyboard>
+                                    <Storyboard x:Name="PART_CloseStoryboard">
                                         <DoubleAnimation
                                             Storyboard.TargetName="PART_Root"
                                             Storyboard.TargetProperty="Opacity"
@@ -150,10 +162,21 @@
 
                                 <VisualState x:Name="ErrorState">
                                     <VisualState.Setters>
-                                        <Setter Target="PART_CloseButton.Style" Value="{StaticResource DangerButton}" />
-                                        <Setter Target="PART_Top.Background" Value="{ThemeResource ErrorColor}" />
-                                        <Setter Target="PART_Icon.Foreground" Value="{ThemeResource OnErrorColor}" />
-                                        <Setter Target="PART_Icon.Glyph" Value="&#xe8b2;" />
+                                        <Setter Target="PART_Content.Background" Value="{ThemeResource ErrorContainerColor}" />
+                                        <Setter Target="PART_Title.Foreground" Value="{ThemeResource OnErrorContainerColor}" />
+                                        <Setter Target="PART_Message.Foreground" Value="{ThemeResource OnErrorContainerColor}" />
+                                        <Setter Target="PART_LottiePlayer.Visibility" Value="Visible" />
+                                        <Setter Target="PART_LottiePlayer.Source" Value="ms-appx:///Assets/Lottie/error.json" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState x:Name="SuccessState">
+                                    <VisualState.Setters>
+                                        <Setter Target="PART_Content.Background" Value="{ThemeResource SurfaceContainerHighColor}" />
+                                        <Setter Target="PART_Title.Foreground" Value="{ThemeResource OnSurfaceColor}" />
+                                        <Setter Target="PART_Message.Foreground" Value="{ThemeResource OnSurfaceVariantColor}" />
+                                        <Setter Target="PART_LottiePlayer.Visibility" Value="Visible" />
+                                        <Setter Target="PART_LottiePlayer.Source" Value="ms-appx:///Assets/Lottie/success.json" />
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
@@ -163,4 +186,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 </ResourceDictionary>

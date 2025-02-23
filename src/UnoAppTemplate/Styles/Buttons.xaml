@@ -102,5 +102,13 @@
         <Setter Property="Background" Value="{ThemeResource SecondaryContainerColor}" />
     </Style>
 
+    <Style
+        x:Key="Button-Label"
+        BasedOn="{StaticResource Button-Primary}"
+        TargetType="Button">
+        <Setter Property="Foreground" Value="{ThemeResource PrimaryColor}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
 
 </ResourceDictionary>
