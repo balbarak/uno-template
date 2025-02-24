@@ -3,10 +3,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:UnoAppTemplate.Helpers"
     xmlns:local="using:UnoAppTemplate.Controls"
+    xmlns:material="using:Uno.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:resx="using:UnoAppTemplate.Resx"
     xmlns:toolkit="using:Uno.UI.Toolkit"
+    xmlns:utu="using:Uno.Toolkit.UI"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -18,9 +21,196 @@
 
         <local:PageHeader Header="Settings" />
 
+        <Grid
+            Grid.Row="1"
+            Margin="{StaticResource Container-Thickness}"
+            Background="{ThemeResource SurfaceContainerLowColor}">
+            <StackPanel Spacing="8">
 
-        <Grid Grid.Row="1" Margin="{StaticResource Container-Thickness}">
-            <StackPanel Spacing="8" />
+                <Button Style="{StaticResource SettingsListItem}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Style="{StaticResource Body-Large}">Langauge</TextBlock>
+                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantColor}" Style="{StaticResource Body-Medium}">Change app interface language</TextBlock>
+                        </StackPanel>
+                        <FontIcon
+                            Grid.Column="2"
+                            Foreground="{ThemeResource OutlineVariantColor}"
+                            Glyph="&#xe5e1;"
+                            Style="{StaticResource FontIcon-Material}" />
+                    </Grid>
+                    <Button.Flyout>
+                        <Flyout FlyoutPresenterStyle="{StaticResource LanguageFlyoutPresenter}" Placement="Full">
+                            <Border
+                                Padding="24"
+                                toolkit:VisibleBoundsPadding.PaddingMask="All"
+                                Background="{ThemeResource SurfaceContainerHighestColor}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Border
+                                        Width="50"
+                                        Height="5"
+                                        HorizontalAlignment="Center"
+                                        Background="{ThemeResource OutlineColor}"
+                                        CornerRadius="4" />
+                                    <StackPanel Grid.Row="1">
+                                        <TextBlock Text="text" />
+
+                                        <Button Content="button" Style="{StaticResource Button-Label}" />
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+
+                <Button Style="{StaticResource SettingsListItem}">
+                    <Grid>
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource Body-Large}">Langauge</TextBlock>
+
+                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantColor}" Style="{StaticResource Body-Medium}">Change app interface language</TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Button>
+
+                <RadioButton
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    BorderBrush="Red"
+                    BorderThickness="2"
+                    Content="Arabic"
+                    CornerRadius="8"
+                    GroupName="LangGroup" />
+                <RadioButton
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    CornerRadius="8"
+                    Foreground="{ThemeResource OnSurfaceVariantColor}"
+                    GroupName="LangGroup">
+                    <StackPanel>
+                        <TextBlock>English</TextBlock>
+                        <TextBlock>English langauge</TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+            </StackPanel>
         </Grid>
     </Grid>
+
+    <Page.Resources>
+        <Style
+            x:Name="SettingsListItem"
+            BasedOn="{StaticResource Button-Primary}"
+            TargetType="Button">
+            <Setter Property="Background" Value="{ThemeResource SurfaceColor}" />
+            <Setter Property="BorderBrush" Value="{ThemeResource OutlineVariantColor}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Foreground" Value="{ThemeResource OnSurfaceColor}" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Padding" Value="8,16" />
+
+        </Style>
+
+        <Style
+            x:Key="LanguageFlyoutPresenter"
+            BasedOn="{StaticResource DrawerFlyoutPresenterStyle}"
+            TargetType="FlyoutPresenter">
+            <Setter Property="utu:DrawerFlyoutPresenter.OpenDirection" Value="Up" />
+            <Setter Property="utu:DrawerFlyoutPresenter.DrawerLength" Value="0.66*" />
+            <Setter Property="utu:DrawerFlyoutPresenter.LightDismissOverlayBackground" Value="#80808080" />
+            <Setter Property="utu:DrawerFlyoutPresenter.IsGestureEnabled" Value="True" />
+            <Setter Property="utu:DrawerFlyoutPresenter.IsLightDismissEnabled" Value="True" />
+            <Setter Property="CornerRadius" Value="36,36,0,0" />
+        </Style>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="Padding" Value="16" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid x:Name="PART_Root">
+                            <material:Ripple
+                                HorizontalContentAlignment="Stretch"
+                                VerticalContentAlignment="Stretch"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Feedback="{TemplateBinding Foreground}"
+                                FeedbackOpacity=".3">
+                                <Grid
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <ContentPresenter
+                                        x:Name="ContentPresenter"
+                                        Grid.Column="0"
+                                        Margin="{TemplateBinding Padding}"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        AutomationProperties.AccessibilityView="Raw"
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        ContentTransitions="{TemplateBinding ContentTransitions}"
+                                        TextWrapping="Wrap" />
+                                    <Grid Grid.Column="1" Margin="16,0">
+                                        <Ellipse
+                                            x:Name="OuterEllipse"
+                                            Width="24"
+                                            Height="24"
+                                            Stroke="{ThemeResource SystemControlForegroundBaseMediumHighBrush}"
+                                            StrokeThickness="{ThemeResource RadioButtonBorderThemeThickness}"
+                                            UseLayoutRounding="False" />
+                                        <FontIcon
+                                            x:Name="PART_CheckedGlyph"
+                                            FontSize="28"
+                                            Foreground="Green"
+                                            Glyph="&#xe86c;"
+                                            Opacity="0"
+                                            Style="{StaticResource FontIcon-Material}" />
+                                    </Grid>
+                                </Grid>
+
+                            </material:Ripple>
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="PART_CheckedGlyph"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="1"
+                                                Duration="00:00:00.25" />
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="OuterEllipse"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0"
+                                                Duration="00:00:00.25" />
+
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked" />
+                                    <VisualState x:Name="Indeterminate" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 </Page>

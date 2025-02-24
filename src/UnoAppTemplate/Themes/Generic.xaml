@@ -11,7 +11,7 @@
         <ResourceDictionary Source="ms-appx:///Controls/Toaster/Toaster.xaml" />
         <ResourceDictionary Source="ms-appx:///Controls/AlertModal/AlertModal.xaml" />
         <ResourceDictionary Source="ms-appx:///Controls/LottiePlayer/LottiePlayer.xaml" />
-        <ResourceDictionary Source="ms-appx:///Controls/ChevronButton/ChevronButton.xaml" />
+
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>
