@@ -10,19 +10,30 @@ public class SettingsViewModel : BaseViewModel
 {
     private readonly LanguageManager _languageManager;
     private readonly INavigationService _navService;
+    private readonly ThemeManager _themeManager;
+    private bool _isDarkSelected;
+    
     private AppLanguage _selectedLangauge;
+    public bool IsDarkSelected { get => _isDarkSelected; set => SetValue(ref _isDarkSelected, value); }
 
     public LanguageManager Langauge => _languageManager;
+
+    public ThemeManager Theme => _themeManager;
 
     public AppLanguage SelectedLanguage { get => _selectedLangauge; set => SetValue(ref _selectedLangauge, value); }
 
     public ICommand ChangeLangaugeCommand { get; }
 
-    public SettingsViewModel(LanguageManager languageManager, INavigationService navService)
+    public ICommand ChangeThemeCommand { get; }
+
+    public SettingsViewModel(LanguageManager languageManager, INavigationService navService, ThemeManager themeManager)
     {
         _languageManager = languageManager;
         _navService = navService;
+        _themeManager = themeManager;
 
+        IsDarkSelected = _themeManager.IsDark;
+        ChangeThemeCommand = new AsyncRelayCommand(ChangeTheme);
         ChangeLangaugeCommand = new AsyncRelayCommand(ChangeLanguage);
     }
 
@@ -37,6 +48,11 @@ public class SettingsViewModel : BaseViewModel
         App.ReloadShell();
 
         await _navService.Navigate(RouteService.SETTINGS_PAGE);
-
     }
+
+    private async Task ChangeTheme()
+    {
+        await _themeManager.SwitchTheme(IsDarkSelected);
+    }
+
 }

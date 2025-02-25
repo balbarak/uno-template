@@ -24,9 +24,13 @@ public partial class MenuItem : NavigationViewItem
 
 
 
+    public static readonly DependencyProperty GlyphProperty =
+        DependencyProperty.Register(nameof(Glyph), typeof(string), typeof(MenuItem), new PropertyMetadata(null));
+    public string Glyph { get => (string)GetValue(GlyphProperty); set => SetValue(GlyphProperty, value); }
+
+
     public MenuItem()
     {
         this.DefaultStyleKey = typeof(MenuItem);
-        
     }
 }

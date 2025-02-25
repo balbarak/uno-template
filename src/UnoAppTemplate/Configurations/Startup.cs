@@ -18,6 +18,7 @@ public class Startup
         services.AddSingleton<INavigationService, NavigationService>();
 
         services.AddSingleton<LanguageManager>();
+        services.AddSingleton<ThemeManager>();
 
         services.AddTransient<ShellViewModel>();
         services.AddTransient<ThemeViewModel>();

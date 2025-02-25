@@ -66,6 +66,11 @@
             <Color x:Key="SurfaceInverseColor">#E0E2E8</Color>
             <Color x:Key="OnsurfaceInverseColor">#2D3135</Color>
             <Color x:Key="PrimaryInverseColor">#31628D</Color>
+
+            <Color x:Key="SurfaceContainerColor">#1D2024</Color>
+            <Color x:Key="SurfaceContainerHighColor">#272A2F</Color>
+            <Color x:Key="SurfaceContainerHighestColor">#32353A</Color>
+            <Color x:Key="SurfaceContainerLowColor">#181C20</Color>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

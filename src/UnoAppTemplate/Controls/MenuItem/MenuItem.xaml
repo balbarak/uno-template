@@ -32,6 +32,12 @@
                                     Fill="{ThemeResource PrimaryColor}"
                                     Visibility="{TemplateBinding IsSelected}" />
 
+                                <Grid Grid.Column="1" Margin="4,0">
+                                    <FontIcon
+                                        Foreground="{ThemeResource OnSurfaceVariantColor}"
+                                        Glyph="{TemplateBinding Glyph}"
+                                        Style="{StaticResource FontIcon-Material}" />
+                                </Grid>
                                 <Grid
                                     x:Name="RootContentElement"
                                     Grid.Column="2"
@@ -40,9 +46,8 @@
                                         x:Name="ContentTextElement"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
-                                        FontFamily="{TemplateBinding TextFont}"
-                                        FontSize="14"
-                                        Foreground="Black"
+                                        Foreground="{ThemeResource OnSurfaceColor}"
+                                        Style="{StaticResource Body-Large}"
                                         Text="{TemplateBinding Text}" />
                                 </Grid>
                             </Grid>

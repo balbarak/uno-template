@@ -24,7 +24,7 @@
 
         <Grid
             Grid.Row="1"
-            Margin="{StaticResource Container-Thickness}"
+            Padding="{StaticResource Container-Thickness}"
             Background="{ThemeResource SurfaceContainerLowColor}">
             <StackPanel Spacing="8">
 
@@ -103,6 +103,24 @@
                             </Border>
                         </Flyout>
                     </Button.Flyout>
+                </Button>
+
+                <Button Command="{x:Bind ViewModel.ChangeThemeCommand}" Style="{StaticResource SettingsListItem}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Style="{StaticResource Body-Large}" Text="{x:Bind resx:CommonText.Language}" />
+                            <TextBlock
+                                Foreground="{ThemeResource OnSurfaceVariantColor}"
+                                Style="{StaticResource Body-Medium}"
+                                Text="{x:Bind resx:CommonText.Language_Desc}" />
+                        </StackPanel>
+
+                        <ToggleSwitch Grid.Column="1" IsOn="{x:Bind ViewModel.IsDarkSelected, Mode=TwoWay}" />
+                    </Grid>
                 </Button>
 
             </StackPanel>

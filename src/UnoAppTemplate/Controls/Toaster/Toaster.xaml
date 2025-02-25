@@ -20,6 +20,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
+                            HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Foreground="{ThemeResource OnSurfaceInverseColor}"
                             Text="{TemplateBinding Text}"
