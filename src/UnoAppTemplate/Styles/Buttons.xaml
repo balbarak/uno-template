@@ -20,7 +20,7 @@
 
         <Setter Property="Foreground" Value="{ThemeResource OnPrimaryColor}" />
         <Setter Property="Background" Value="{ThemeResource PrimaryColor}" />
-
+        <Setter Property="FontFamily" Value="{StaticResource AppFont}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
 

@@ -32,7 +32,7 @@ public class SettingsViewModel : BaseViewModel
 
         await _navService.Navigate(RouteService.LOADING_PAGE);
 
-        await Task.Delay(2000);
+        await Task.Delay(500);
 
         App.ReloadShell();
 

@@ -21,6 +21,8 @@ public class LanguageManager : BindableObjectBase
     public AppLanguage CurrentLanguage { get => _currentLanguage; set => SetValue(ref _currentLanguage, value); }
     public ElementFlowDirection Direction { get => _direction; set => SetValue(ref _direction, value); }
 
+    public IList<ResourceDictionary> AppDictionary => App.Current.Resources.MergedDictionaries;
+
     public LanguageManager()
     {
         _direction = ElementFlowDirection.LeftToRight;
@@ -58,7 +60,12 @@ public class LanguageManager : BindableObjectBase
 
     private void AddStyleRtl()
     {
-        App.Current.Resources.MergedDictionaries.Add(new ResourceDictionary()
+        var found = AppDictionary.Where(a => a.Source == new Uri(STYLE_RTL)).FirstOrDefault();
+
+        if (found != null)
+            return;
+
+        AppDictionary.Add(new ResourceDictionary()
         {
             Source = new Uri(STYLE_RTL)
         });
@@ -66,9 +73,9 @@ public class LanguageManager : BindableObjectBase
 
     private void RemoveStyleRtl()
     {
-        var rtlResource = App.Current.Resources.MergedDictionaries.Where(a => a.Source == new Uri(STYLE_RTL)).FirstOrDefault();
+        var rtlResource = AppDictionary.Where(a => a.Source == new Uri(STYLE_RTL)).FirstOrDefault();
 
         if (rtlResource != null)
-            App.Current.Resources.MergedDictionaries.Remove(rtlResource);
+            AppDictionary.Remove(rtlResource);
     }
 }

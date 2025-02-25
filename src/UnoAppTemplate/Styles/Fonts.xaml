@@ -25,4 +25,8 @@
         ms-appx:///Assets/Fonts/Material-Icons.otf#MaterialIcons
     </FontFamily>
 
+    <FontFamily x:Key="AppFont">
+        ms-appx:///Assets/Fonts/Roboto-Regular.ttf#Roboto
+    </FontFamily>
+
 </ResourceDictionary>

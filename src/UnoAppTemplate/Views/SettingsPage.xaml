@@ -35,8 +35,11 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="1">
-                            <TextBlock Style="{StaticResource Body-Large}">Langauge</TextBlock>
-                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantColor}" Style="{StaticResource Body-Medium}">Change app interface language</TextBlock>
+                            <TextBlock Style="{StaticResource Body-Large}" Text="{x:Bind resx:CommonText.Language}" />
+                            <TextBlock
+                                Foreground="{ThemeResource OnSurfaceVariantColor}"
+                                Style="{StaticResource Body-Medium}"
+                                Text="{x:Bind resx:CommonText.Language_Desc}" />
                         </StackPanel>
                         <FontIcon
                             Grid.Column="2"
@@ -98,7 +101,6 @@
                         </Flyout>
                     </Button.Flyout>
                 </Button>
-
 
             </StackPanel>
         </Grid>

@@ -3,6 +3,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:material="using:Uno.Material">
 
+    <FontFamily x:Key="AppFont">
+        ms-appx:///Assets/Fonts/Tajawal-Regular.ttf#Tajawal
+    </FontFamily>
+
     <Style
         x:Key="Icon-Chevron"
         BasedOn="{StaticResource FontIcon-Material}"

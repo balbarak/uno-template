@@ -50,7 +50,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Content="{x:Bind Header, Mode=OneWay}"
-            FontFamily="{StaticResource tajawal}"
+            FontFamily="{StaticResource AppFont}"
             FontSize="22"
             Foreground="{ThemeResource OnSurfaceColor}"
             LineHeight="28" />
