@@ -13,15 +13,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="{StaticResource Header-Height}" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-
-        <local:PageHeader Header="{x:Bind resx:CommonText.Settings, FallbackValue='Settings'}" />
-
+        <local:PageHeader Header="{x:Bind resx:CommonText.Settings}" />
 
         <Grid
             Grid.Row="1"
@@ -108,6 +107,7 @@
 
             </StackPanel>
         </Grid>
+
     </Grid>
 
     <Page.Resources>
