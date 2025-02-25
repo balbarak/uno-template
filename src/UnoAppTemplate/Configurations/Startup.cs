@@ -17,6 +17,8 @@ public class Startup
 
         services.AddSingleton<INavigationService, NavigationService>();
 
+        services.AddSingleton<LanguageManager>();
+
         services.AddTransient<ShellViewModel>();
         services.AddTransient<ThemeViewModel>();
         
@@ -25,5 +27,6 @@ public class Startup
         services.AddPage<ButtonViewModel, ButtonsPage>(RouteService.BUTTONS_PAGE);
         services.AddPage<ThemeViewModel, ThemePage>(RouteService.THEME_PAGE);
         services.AddPage<SettingsViewModel, SettingsPage>(RouteService.SETTINGS_PAGE);
+        services.AddPage<LoadingViewModel, LoadingPage>(RouteService.LOADING_PAGE);
     }
 }

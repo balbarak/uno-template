@@ -1,0 +1,12 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:material="using:Uno.Material">
+
+    <Style
+        x:Key="Icon-Chevron"
+        BasedOn="{StaticResource FontIcon-Material}"
+        TargetType="FontIcon">
+        <Setter Property="Glyph" Value="&#xe5e0;" />
+    </Style>
+</ResourceDictionary>

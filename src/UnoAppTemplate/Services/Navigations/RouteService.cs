@@ -15,6 +15,7 @@ public class RouteService
     public const string TYPOGRAPHY_PAGE = "//typography";
     public const string THEME_PAGE = "//theme";
     public const string SETTINGS_PAGE = "//settings";
+    public const string LOADING_PAGE = "//loading";
 
     static RouteService()
     {

@@ -22,7 +22,7 @@ namespace UnoAppTemplate.Resx {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class CommonText {
+    public class CommonText {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace UnoAppTemplate.Resx {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UnoAppTemplate.Resx.CommonText", typeof(CommonText).Assembly);
@@ -51,7 +51,7 @@ namespace UnoAppTemplate.Resx {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,18 @@ namespace UnoAppTemplate.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to تطبيق التغييرات.
+        /// </summary>
+        public static string ApplyChanges {
+            get {
+                return ResourceManager.GetString("ApplyChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to الازرار.
         /// </summary>
-        internal static string Buttons {
+        public static string Buttons {
             get {
                 return ResourceManager.GetString("Buttons", resourceCulture);
             }
@@ -72,7 +81,7 @@ namespace UnoAppTemplate.Resx {
         /// <summary>
         ///   Looks up a localized string similar to الرئيسية.
         /// </summary>
-        internal static string Home {
+        public static string Home {
             get {
                 return ResourceManager.GetString("Home", resourceCulture);
             }
@@ -81,7 +90,7 @@ namespace UnoAppTemplate.Resx {
         /// <summary>
         ///   Looks up a localized string similar to اللغة.
         /// </summary>
-        internal static string Language {
+        public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
             }
@@ -90,7 +99,7 @@ namespace UnoAppTemplate.Resx {
         /// <summary>
         ///   Looks up a localized string similar to تغيير لغة واجهات التطبيق.
         /// </summary>
-        internal static string Language_Desc {
+        public static string Language_Desc {
             get {
                 return ResourceManager.GetString("Language_Desc", resourceCulture);
             }
@@ -99,7 +108,7 @@ namespace UnoAppTemplate.Resx {
         /// <summary>
         ///   Looks up a localized string similar to موافق.
         /// </summary>
-        internal static string Ok {
+        public static string Ok {
             get {
                 return ResourceManager.GetString("Ok", resourceCulture);
             }
@@ -108,7 +117,7 @@ namespace UnoAppTemplate.Resx {
         /// <summary>
         ///   Looks up a localized string similar to اعدادات.
         /// </summary>
-        internal static string Settings {
+        public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
             }

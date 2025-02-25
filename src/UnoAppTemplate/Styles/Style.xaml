@@ -1,4 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:material="using:Uno.Material">
 
     <Style x:Key="Container" TargetType="Grid">
         <Setter Property="Margin" Value="12,16" />
@@ -54,25 +57,93 @@
     </Style>
 
     <Style
-        x:Key="Chevron"
-        BasedOn="{StaticResource FontIcon-Material}"
-        TargetType="FontIcon">
-        <Setter Property="Glyph" Value="&#xe5e1;" />
-    </Style>
-
-    <Style
-        x:Key="ChevronLeft"
-        BasedOn="{StaticResource FontIcon-Material}"
-        TargetType="FontIcon">
-        <Setter Property="Glyph" Value="&#xe5e0;" />
-    </Style>
-
-    <Style
-        x:Key="ChevronRight"
+        x:Key="Icon-Chevron"
         BasedOn="{StaticResource FontIcon-Material}"
         TargetType="FontIcon">
         <Setter Property="Glyph" Value="&#xe5e1;" />
     </Style>
 
 
+    <Style x:Key="RadioButton-CheckMark" TargetType="RadioButton">
+        <Setter Property="Padding" Value="16" />
+        <Setter Property="Background" Value="{ThemeResource SurfaceColor}" />
+        <Setter Property="BorderBrush" Value="{ThemeResource OutlineVariantColor}" />
+        <Setter Property="Foreground" Value="{ThemeResource OnSurfaceColor}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Grid x:Name="PART_Root">
+                        <material:Ripple
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Feedback="{TemplateBinding Foreground}"
+                            FeedbackOpacity=".12">
+                            <Grid
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter
+                                    x:Name="ContentPresenter"
+                                    Grid.Column="0"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    AutomationProperties.AccessibilityView="Raw"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                    ContentTransitions="{TemplateBinding ContentTransitions}"
+                                    TextWrapping="Wrap" />
+                                <Grid Grid.Column="1" Margin="16,0">
+                                    <Ellipse
+                                        x:Name="OuterEllipse"
+                                        Width="24"
+                                        Height="24"
+                                        Stroke="{ThemeResource SystemControlForegroundBaseMediumHighBrush}"
+                                        StrokeThickness="{ThemeResource RadioButtonBorderThemeThickness}"
+                                        UseLayoutRounding="False" />
+                                    <FontIcon
+                                        x:Name="PART_CheckedGlyph"
+                                        FontSize="28"
+                                        Foreground="Green"
+                                        Glyph="&#xe86c;"
+                                        Opacity="0"
+                                        Style="{StaticResource FontIcon-Material}" />
+                                </Grid>
+                            </Grid>
+
+                        </material:Ripple>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_CheckedGlyph"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="00:00:00.25" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="OuterEllipse"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="0"
+                                            Duration="00:00:00.25" />
+
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked" />
+                                <VisualState x:Name="Indeterminate" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

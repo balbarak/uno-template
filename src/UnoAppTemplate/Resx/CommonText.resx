@@ -115,4 +115,7 @@
   <data name="Language_Desc" xml:space="preserve">
     <value>تغيير لغة واجهات التطبيق</value>
   </data>
+  <data name="ApplyChanges" xml:space="preserve">
+    <value>تطبيق التغييرات</value>
+  </data>
 </root>

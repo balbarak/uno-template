@@ -23,8 +23,6 @@ public partial class App : Application
         this.InitializeComponent();
     }
 
-
-
     protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
         var builder = CreateHost(args);
@@ -57,6 +55,13 @@ public partial class App : Application
         await handler.Activate();
 
         MainWindow.Activate();
+    }
+
+
+    public static void ReloadShell()
+    {
+        ContentHost = new Shell();
+        MainWindow.Content = ContentHost;
     }
 
     public static T GetService<T>()

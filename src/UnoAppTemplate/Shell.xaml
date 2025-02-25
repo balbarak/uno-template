@@ -9,7 +9,7 @@
     xmlns:material="using:Uno.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:utu="using:Uno.Toolkit.UI"
-    local:ElementDirection.Flow="LeftToRight"
+    local:ElementDirection.Flow="{x:Bind ViewModel.Language.Direction}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
