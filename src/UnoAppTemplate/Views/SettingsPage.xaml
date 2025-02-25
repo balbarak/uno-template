@@ -19,7 +19,9 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <local:PageHeader Header="{x:Bind resx:CommonText.Settings}" />
+
+        <local:PageHeader Header="{x:Bind resx:CommonText.Settings, FallbackValue='Settings'}" />
+
 
         <Grid
             Grid.Row="1"
@@ -41,6 +43,8 @@
                                 Style="{StaticResource Body-Medium}"
                                 Text="{x:Bind resx:CommonText.Language_Desc}" />
                         </StackPanel>
+
+
                         <FontIcon
                             Grid.Column="2"
                             Foreground="{ThemeResource OutlineVariantColor}"

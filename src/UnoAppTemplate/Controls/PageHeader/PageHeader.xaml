@@ -20,8 +20,6 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-
-
         <Button
             x:Name="PART_MenuButton"
             Grid.Column="0"
