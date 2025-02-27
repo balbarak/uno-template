@@ -10,6 +10,9 @@
     xmlns:resx="using:UnoAppTemplate.Resx"
     xmlns:toolkit="using:Uno.UI.Toolkit"
     xmlns:utu="using:Uno.Toolkit.UI"
+    xmlns:views="using:UnoAppTemplate.Views"
+    xmlns:vm="using:UnoAppTemplate.ViewModels"
+    d:DataContext="{d:DesignInstance Type=vm:SettingsViewModel}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -50,58 +53,8 @@
                             Style="{StaticResource Icon-Chevron}" />
                     </Grid>
                     <Button.Flyout>
-                        <Flyout
-                            FlyoutPresenterStyle="{StaticResource LanguageFlyoutPresenter}"
-                            Opening="OnLanguageFlyoutOpening"
-                            Placement="Full">
-                            <Border
-                                Padding="24"
-                                toolkit:VisibleBoundsPadding.PaddingMask="All"
-                                Background="{ThemeResource SurfaceContainerHighestColor}">
-                                <Grid RowSpacing="24">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <Border
-                                        Width="60"
-                                        Height="5"
-                                        HorizontalAlignment="Center"
-                                        Background="{ThemeResource OutlineColor}"
-                                        CornerRadius="4" />
-                                    <StackPanel Grid.Row="1" Spacing="8">
-                                        <RadioButton
-                                            x:Name="English"
-                                            HorizontalAlignment="Stretch"
-                                            HorizontalContentAlignment="Stretch"
-                                            Checked="OnSelectLangaugeChanged"
-                                            Content="English"
-                                            CornerRadius="8"
-                                            FontSize="16"
-                                            GroupName="LangGroup"
-                                            Style="{ThemeResource RadioButton-CheckMark}" />
-                                        <RadioButton
-                                            x:Name="Arabic"
-                                            HorizontalAlignment="Stretch"
-                                            HorizontalContentAlignment="Left"
-                                            Checked="OnSelectLangaugeChanged"
-                                            Content="العربية"
-                                            CornerRadius="8"
-                                            FontFamily="{StaticResource Font-Tajawal}"
-                                            FontSize="16"
-                                            GroupName="LangGroup"
-                                            Style="{ThemeResource RadioButton-CheckMark}" />
-                                        <Button
-                                            Margin="0,24,0,0"
-                                            HorizontalAlignment="Stretch"
-                                            Command="{x:Bind ViewModel.ChangeLangaugeCommand}"
-                                            Content="{x:Bind resx:CommonText.ApplyChanges, Mode=OneWay}" />
-                                    </StackPanel>
+                        <views:ChooseLanguageFlyout ChangeLanguageCommand="{x:Bind ViewModel.ChangeLangaugeCommand}" SelectedLanguage="{x:Bind ViewModel.SelectedLanguage, Mode=TwoWay}" />
 
-
-                                </Grid>
-                            </Border>
-                        </Flyout>
                     </Button.Flyout>
                 </Button>
 
@@ -119,7 +72,10 @@
                                 Text="{x:Bind resx:CommonText.Language_Desc}" />
                         </StackPanel>
 
-                        <ToggleSwitch Grid.Column="1" Toggled="OnDarkThemeToggled" IsOn="{x:Bind ViewModel.IsDarkSelected, Mode=TwoWay}" />
+                        <ToggleSwitch
+                            Grid.Column="1"
+                            IsOn="{x:Bind ViewModel.IsDarkSelected, Mode=TwoWay}"
+                            Toggled="OnDarkThemeToggled" />
                     </Grid>
                 </Grid>
 

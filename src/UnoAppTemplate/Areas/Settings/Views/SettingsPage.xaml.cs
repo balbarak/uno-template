@@ -27,25 +27,25 @@ public sealed partial class SettingsPage : Page
 
     private void SetCurrentLangauge()
     {
-        var current = ViewModel.Langauge.CurrentLanguage;
+        //var current = ViewModel.Langauge.CurrentLanguage;
 
-        switch (current)
-        {
-            case AppLanguage.English:
+        //switch (current)
+        //{
+        //    case AppLanguage.English:
 
-                English.IsChecked = true;
-                Arabic.IsChecked = false;
+        //        English.IsChecked = true;
+        //        Arabic.IsChecked = false;
 
-                break;
-            case AppLanguage.Arabic:
+        //        break;
+        //    case AppLanguage.Arabic:
                 
-                Arabic.IsChecked = true;
-                English.IsChecked = false;
+        //        Arabic.IsChecked = true;
+        //        English.IsChecked = false;
 
-                break;
-            default:
-                break;
-        }
+        //        break;
+        //    default:
+        //        break;
+        //}
     }
 
     private void OnLanguageFlyoutOpening(object sender, object e)

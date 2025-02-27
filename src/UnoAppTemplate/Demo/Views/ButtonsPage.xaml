@@ -8,6 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:Uno.UI.Toolkit"
     xmlns:um="using:Uno.Material"
+    xmlns:vm="using:UnoAppTemplate.ViewModels"
+    d:DataContext="{d:DesignInstance Type=vm:ButtonViewModel}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -18,7 +20,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <local:PageHeader Header="Buttons Page" />
+        <local:PageHeader Header="{Binding Title}" />
 
         <Grid Grid.Row="1" Background="{ThemeResource SurfaceContainerLowColor}">
 
@@ -27,24 +29,24 @@
                     <Grid Style="{ThemeResource Card}">
                         <Grid Style="{StaticResource Card-Content}">
                             <StackPanel>
-                                <TextBlock Style="{ThemeResource Card-Title}" Text="Buttons" />
-                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Buttons Style" />
+                                <TextBlock Style="{ThemeResource Card-Title}" Text="{Binding ButtonTitle}" />
+                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="{Binding ButtonSubtitle}" />
 
                                 <StackPanel Spacing="8">
-                                    <Button HorizontalAlignment="Stretch" Content="Default Button" />
+                                    <Button HorizontalAlignment="Stretch" Content="{Binding PrimaryButton}" />
 
                                     <Button
                                         HorizontalAlignment="Stretch"
-                                        Content="Tonal Button"
+                                        Content="{Binding TonalButton}"
                                         Style="{ThemeResource Button-Tonal}" />
                                     <Button
                                         HorizontalAlignment="Stretch"
-                                        Content="Outline Button"
+                                        Content="{Binding OutlineButton}"
                                         Style="{ThemeResource Button-Outline}" />
 
                                     <Button
                                         HorizontalAlignment="Stretch"
-                                        Content="Disabled Button"
+                                        Content="{Binding DisabledButton}"
                                         IsEnabled="False" />
 
                                 </StackPanel>
@@ -55,8 +57,8 @@
                     <Grid Style="{ThemeResource Card}">
                         <Grid Style="{StaticResource Card-Content}">
                             <StackPanel>
-                                <TextBlock Style="{ThemeResource Card-Title}" Text="Loading Buttons" />
-                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Loading buttons style" />
+                                <TextBlock Style="{ThemeResource Card-Title}" Text="{Binding LoadingButtonTitle}" />
+                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="{Binding LoadingButtonSubtitle}" />
 
                                 <StackPanel Spacing="8">
 
@@ -64,20 +66,20 @@
                                     <local:LoadingButton
                                         HorizontalAlignment="Stretch"
                                         Command="{x:Bind ViewModel.LoadCommand}"
-                                        Content="Loading Button"
+                                        Content="{Binding LoadingButton}"
                                         IsLoading="{x:Bind ViewModel.IsBusy, Mode=OneWay}" />
 
                                     <local:LoadingButton
                                         HorizontalAlignment="Stretch"
                                         Command="{x:Bind ViewModel.LoadCommand}"
-                                        Content="Loading Button Toan"
+                                        Content="{Binding LoadingButton}"
                                         IsLoading="{x:Bind ViewModel.IsBusy, Mode=OneWay}"
                                         Style="{StaticResource Button-LoadingTonal}" />
 
                                     <local:LoadingButton
                                         HorizontalAlignment="Stretch"
                                         Command="{x:Bind ViewModel.LoadCommand}"
-                                        Content="Loading Button Outline"
+                                        Content="{Binding LoadingButton}"
                                         IsLoading="{x:Bind ViewModel.IsBusy, Mode=OneWay}"
                                         Style="{StaticResource Button-LoadingOutline}" />
 
