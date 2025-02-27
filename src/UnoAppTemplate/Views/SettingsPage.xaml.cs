@@ -52,4 +52,9 @@ public sealed partial class SettingsPage : Page
     {
         SetCurrentLangauge();
     }
+
+    private async void OnDarkThemeToggled(object sender, RoutedEventArgs e)
+    {
+        await ViewModel.ChangeTheme();
+    }
 }

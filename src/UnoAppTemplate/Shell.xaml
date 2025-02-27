@@ -11,6 +11,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:resx="using:UnoAppTemplate.Resx"
     xmlns:utu="using:Uno.Toolkit.UI"
+    xmlns:vm="using:UnoAppTemplate.ViewModels"
+    d:DataContext="{d:DesignInstance Type=vm:ShellViewModel}"
     local:ElementDirection.Flow="{x:Bind ViewModel.Language.Direction}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
@@ -23,7 +25,7 @@
             IsPaneOpen="False"
             PanePlacement="Left">
             <SplitView.Pane>
-                <Grid Background="{ThemeResource SurfaceContainerHighestColor}">
+                <Grid Background="{ThemeResource SurfaceContainerColor}">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="120" />
@@ -42,17 +44,20 @@
                             <ctl:MenuItem
                                 Command="{x:Bind ViewModel.GoToPage}"
                                 CommandParameter="{x:Bind app:RouteService.THEME_PAGE}"
-                                Text="Theme Page" />
+                                Glyph="{x:Bind helpers:MaterialIcons.Palette}"
+                                Text="{x:Bind resx:CommonText.Theme}" />
 
                             <ctl:MenuItem
                                 Command="{x:Bind ViewModel.GoToPage}"
                                 CommandParameter="{x:Bind app:RouteService.BUTTONS_PAGE}"
-                                Text="Button Page" />
+                                Glyph="{x:Bind helpers:MaterialIcons.Smart_button}"
+                                Text="{x:Bind resx:CommonText.Buttons}" />
 
                             <ctl:MenuItem
                                 Command="{x:Bind ViewModel.GoToPage}"
                                 CommandParameter="{x:Bind app:RouteService.TYPOGRAPHY_PAGE}"
-                                Text="Typography" />
+                                Glyph="{x:Bind helpers:MaterialIcons.Type_specimen}"
+                                Text="{x:Bind resx:CommonText.Typography}" />
 
                             <ctl:MenuItem
                                 Command="{x:Bind ViewModel.GoToPage}"

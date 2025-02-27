@@ -37,7 +37,7 @@ public class SettingsViewModel : BaseViewModel
         ChangeLangaugeCommand = new AsyncRelayCommand(ChangeLanguage);
     }
 
-    private async Task ChangeLanguage()
+    public async Task ChangeLanguage()
     {
         await _languageManager.ChangeLangauge(SelectedLanguage);
 
@@ -50,7 +50,7 @@ public class SettingsViewModel : BaseViewModel
         await _navService.Navigate(RouteService.SETTINGS_PAGE);
     }
 
-    private async Task ChangeTheme()
+    public async Task ChangeTheme()
     {
         await _themeManager.SwitchTheme(IsDarkSelected);
     }

@@ -105,7 +105,7 @@
                     </Button.Flyout>
                 </Button>
 
-                <Button Command="{x:Bind ViewModel.ChangeThemeCommand}" Style="{StaticResource SettingsListItem}">
+                <Grid Style="{StaticResource SettingsListItemGrid}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -119,9 +119,9 @@
                                 Text="{x:Bind resx:CommonText.Language_Desc}" />
                         </StackPanel>
 
-                        <ToggleSwitch Grid.Column="1" IsOn="{x:Bind ViewModel.IsDarkSelected, Mode=TwoWay}" />
+                        <ToggleSwitch Grid.Column="1" Toggled="OnDarkThemeToggled" IsOn="{x:Bind ViewModel.IsDarkSelected, Mode=TwoWay}" />
                     </Grid>
-                </Button>
+                </Grid>
 
             </StackPanel>
         </Grid>
@@ -130,7 +130,7 @@
 
     <Page.Resources>
         <Style
-            x:Name="SettingsListItem"
+            x:Key="SettingsListItem"
             BasedOn="{StaticResource Button-Primary}"
             TargetType="Button">
             <Setter Property="Background" Value="{ThemeResource SurfaceColor}" />
@@ -140,8 +140,16 @@
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Padding" Value="8,16" />
+            <Setter Property="Padding" Value="16" />
+        </Style>
 
+        <Style x:Key="SettingsListItemGrid" TargetType="Grid">
+            <Setter Property="Background" Value="{ThemeResource SurfaceColor}" />
+            <Setter Property="BorderBrush" Value="{ThemeResource OutlineVariantColor}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Foreground" Value="{ThemeResource OnSurfaceColor}" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Padding" Value="16" />
         </Style>
 
         <Style

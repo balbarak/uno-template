@@ -15,7 +15,10 @@
                         CommandParameter="{TemplateBinding CommandParameter}"
                         Foreground="{ThemeResource PrimaryColor}">
                         <Grid x:Name="PART_Root" Height="56">
-                            <Rectangle Fill="{ThemeResource SurfaceVariantColor}" Visibility="{TemplateBinding IsSelected}" />
+                            <Rectangle
+                                x:Name="PART_SelectedBackground"
+                                Fill="{ThemeResource SecondaryContainerColor}"
+                                Visibility="{TemplateBinding IsSelected}" />
 
                             <Grid Height="56">
 
@@ -26,7 +29,7 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Rectangle
-                                    x:Name="SelectedBorderElement"
+                                    x:Name="PART_SelectedChevron"
                                     Width="4"
                                     Margin="2,12"
                                     Fill="{ThemeResource PrimaryColor}"
@@ -34,16 +37,17 @@
 
                                 <Grid Grid.Column="1" Margin="4,0">
                                     <FontIcon
+                                        x:Name="PART_Glyph"
                                         Foreground="{ThemeResource OnSurfaceVariantColor}"
                                         Glyph="{TemplateBinding Glyph}"
                                         Style="{StaticResource FontIcon-Material}" />
                                 </Grid>
                                 <Grid
-                                    x:Name="RootContentElement"
+                                    x:Name="PART_Content"
                                     Grid.Column="2"
                                     Padding="8">
                                     <TextBlock
-                                        x:Name="ContentTextElement"
+                                        x:Name="PART_Text"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         Foreground="{ThemeResource OnSurfaceColor}"
@@ -51,6 +55,20 @@
                                         Text="{TemplateBinding Text}" />
                                 </Grid>
                             </Grid>
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup>
+                                    <VisualState x:Name="SelectedState">
+                                        <VisualState.Setters>
+                                            <Setter Target="PART_Text.Foreground" Value="{ThemeResource OnSecondaryContainerColor}" />
+                                            <Setter Target="PART_Glyph.Foreground" Value="{ThemeResource OnSecondaryContainerColor}" />
+                                        </VisualState.Setters>
+                                        <VisualState.StateTriggers>
+                                            <StateTrigger IsActive="{TemplateBinding IsSelected}" />
+                                        </VisualState.StateTriggers>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
                         </Grid>
 
                     </local:RippleButton>

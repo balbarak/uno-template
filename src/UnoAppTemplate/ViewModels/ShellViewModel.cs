@@ -27,6 +27,8 @@ public class ShellViewModel : BaseViewModel
     private async Task OnGotoPage(string route)
     {
         App.ContentHost.HideMenu();
+        
+        await Task.Delay(100);
 
         await _navService.Navigate(route);
     }
