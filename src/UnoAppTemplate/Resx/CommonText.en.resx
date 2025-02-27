@@ -118,4 +118,10 @@
   <data name="ApplyChanges" xml:space="preserve">
     <value>Apply Changes</value>
   </data>
+  <data name="Typography" xml:space="preserve">
+    <value>Typography</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
 </root>

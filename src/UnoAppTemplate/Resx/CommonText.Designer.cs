@@ -122,5 +122,23 @@ namespace UnoAppTemplate.Resx {
                 return ResourceManager.GetString("Settings", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to السمة.
+        /// </summary>
+        public static string Theme {
+            get {
+                return ResourceManager.GetString("Theme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نمط الخط.
+        /// </summary>
+        public static string Typography {
+            get {
+                return ResourceManager.GetString("Typography", resourceCulture);
+            }
+        }
     }
 }

@@ -118,4 +118,10 @@
   <data name="ApplyChanges" xml:space="preserve">
     <value>تطبيق التغييرات</value>
   </data>
+  <data name="Typography" xml:space="preserve">
+    <value>نمط الخط</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>السمة</value>
+  </data>
 </root>
