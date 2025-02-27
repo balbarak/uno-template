@@ -115,6 +115,15 @@ namespace UnoAppTemplate.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to الرجاء الانتظار ....
+        /// </summary>
+        public static string PleaseWait {
+            get {
+                return ResourceManager.GetString("PleaseWait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اعدادات.
         /// </summary>
         public static string Settings {

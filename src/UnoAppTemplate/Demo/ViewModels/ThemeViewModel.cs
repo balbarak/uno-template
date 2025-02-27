@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnoAppTemplate.Controls;
+using UnoAppTemplate.Resx;
 using UnoAppTemplate.Services;
 
 namespace UnoAppTemplate.ViewModels;
@@ -17,6 +18,7 @@ public class ThemeViewModel : BaseViewModel
 
     public ThemeViewModel(INavigationService navService)
     {
+        Title = CommonText.Theme;
         ShowToasterCommand = new AsyncRelayCommand(OnShowToasterCommand,AsyncRelayCommandOptions.AllowConcurrentExecutions);
         ShowSuccessAlertCommand = new AsyncRelayCommand(ShowSuccessAlert);
         ShowErrorAlertCommand = new AsyncRelayCommand(ShowErrorAlert);

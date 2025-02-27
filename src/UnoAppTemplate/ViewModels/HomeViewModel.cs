@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnoAppTemplate.Resx;
 using UnoAppTemplate.Services;
 
 namespace UnoAppTemplate.ViewModels;
@@ -15,6 +16,8 @@ public class HomeViewModel : BaseViewModel
     public HomeViewModel(INavigationService navService)
     {
         GoToSecondPage = new AsyncRelayCommand(OnGoToSecondPage);
+        Title = CommonText.Home;
+
         _navService = navService;
     }
 

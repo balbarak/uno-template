@@ -124,4 +124,7 @@
   <data name="Theme" xml:space="preserve">
     <value>Theme</value>
   </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Please wait ...</value>
+  </data>
 </root>

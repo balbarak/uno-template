@@ -6,6 +6,8 @@
     xmlns:local="using:UnoAppTemplate.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:Uno.UI.Toolkit"
+    xmlns:vm="using:UnoAppTemplate.ViewModels"
+    d:DataContext="{d:DesignInstance Type=vm:ThemeViewModel}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -15,7 +17,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <local:PageHeader Header="Theme Page" />
+        <local:PageHeader Header="{Binding Title}" />
 
         <Grid Grid.Row="1" Background="{ThemeResource SurfaceContainerLowColor}">
             <ScrollViewer>

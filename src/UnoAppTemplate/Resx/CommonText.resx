@@ -124,4 +124,7 @@
   <data name="Theme" xml:space="preserve">
     <value>السمة</value>
   </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>الرجاء الانتظار ...</value>
+  </data>
 </root>

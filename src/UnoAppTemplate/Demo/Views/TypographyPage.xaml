@@ -5,6 +5,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:UnoAppTemplate.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resx="using:UnoAppTemplate.Resx"
+    xmlns:vm="using:UnoAppTemplate.ViewModels"
+    d:DataContext="{d:DesignInstance Type=vm:TypographyViewModel}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -14,7 +17,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <local:PageHeader Header="Typography" />
+        <local:PageHeader Header="{Binding Title}" />
 
         <Grid Grid.Row="1" Background="{ThemeResource SurfaceContainerLowColor}">
 
@@ -23,22 +26,22 @@
                     <Grid Style="{ThemeResource Card}">
                         <Grid Style="{StaticResource Card-Content}">
                             <StackPanel>
-                                <TextBlock Style="{ThemeResource Card-Title}" Text="Display Typography" />
-                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Display text styles" />
-                                <TextBlock Style="{StaticResource Display-Large}" Text="Display Large" />
-                                <TextBlock Style="{StaticResource Display-Medium}" Text="Display Medium" />
-                                <TextBlock Style="{StaticResource Display-Small}" Text="Display Small" />
+                                <TextBlock Style="{ThemeResource Card-Title}" Text="{Binding DisplayTitle}" />
+                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="{Binding DisplaySubtitle}" />
+                                <TextBlock Style="{StaticResource Display-Large}" Text="{Binding DisplayLarge}" />
+                                <TextBlock Style="{StaticResource Display-Medium}" Text="{Binding DisplayMedium}" />
+                                <TextBlock Style="{StaticResource Display-Small}" Text="{Binding DisplaySmall}" />
                             </StackPanel>
                         </Grid>
                     </Grid>
                     <Grid Style="{ThemeResource Card}">
                         <Grid Style="{StaticResource Card-Content}">
                             <StackPanel>
-                                <TextBlock Style="{ThemeResource Card-Title}" Text="Headline Typography" />
-                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Headlines text styles" />
-                                <TextBlock Style="{StaticResource Headline-Large}" Text="Headline Large" />
-                                <TextBlock Style="{StaticResource Headline-Medium}" Text="Headline Medium" />
-                                <TextBlock Style="{StaticResource Headline-Small}" Text="Headline Small" />
+                                <TextBlock Style="{ThemeResource Card-Title}" Text="{Binding HeadlineTitle}" />
+                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="{Binding HeadlineSubtitle}" />
+                                <TextBlock Style="{StaticResource Headline-Large}" Text="{Binding HeadlineLarge}" />
+                                <TextBlock Style="{StaticResource Headline-Medium}" Text="{Binding HeadlineMedium}" />
+                                <TextBlock Style="{StaticResource Headline-Small}" Text="{Binding HeadlineSmall}" />
                             </StackPanel>
                         </Grid>
                     </Grid>
@@ -46,22 +49,22 @@
                     <Grid Style="{ThemeResource Card}">
                         <Grid Style="{StaticResource Card-Content}">
                             <StackPanel>
-                                <TextBlock Style="{ThemeResource Card-Title}" Text="Title Typography" />
-                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Titles text styles" />
-                                <TextBlock Style="{StaticResource Title-Large}" Text="Title Large - Roboto Regular" />
-                                <TextBlock Style="{StaticResource Title-Medium}" Text="Title Medium - Roboto Regular" />
-                                <TextBlock Style="{StaticResource Title-Small}" Text="Title Small - Roboto Regular" />
+                                <TextBlock Style="{ThemeResource Card-Title}" Text="{Binding TitleTitle}" />
+                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="{Binding TitleSubtitle}" />
+                                <TextBlock Style="{StaticResource Title-Large}" Text="{Binding TitleLarge}" />
+                                <TextBlock Style="{StaticResource Title-Medium}" Text="{Binding TitleMedium}" />
+                                <TextBlock Style="{StaticResource Title-Small}" Text="{Binding TitleSmall}" />
                             </StackPanel>
                         </Grid>
                     </Grid>
                     <Grid Style="{ThemeResource Card}">
                         <Grid Style="{StaticResource Card-Content}">
                             <StackPanel>
-                                <TextBlock Style="{ThemeResource Card-Title}" Text="Body Typography" />
-                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Body text styles" />
-                                <TextBlock Style="{StaticResource Body-Large}" Text="Body Large - Roboto Regular" />
-                                <TextBlock Style="{StaticResource Body-Medium}" Text="Body Medium - Roboto Regular" />
-                                <TextBlock Style="{StaticResource Body-Small}" Text="Body Small - Roboto Regular" />
+                                <TextBlock Style="{ThemeResource Card-Title}" Text="{Binding BodyTitle}" />
+                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="{Binding BodySubtitle}" />
+                                <TextBlock Style="{StaticResource Body-Large}" Text="{Binding BodyLarge}" />
+                                <TextBlock Style="{StaticResource Body-Medium}" Text="{Binding BodyMedium}" />
+                                <TextBlock Style="{StaticResource Body-Small}" Text="{Binding BodySmall}" />
                             </StackPanel>
                         </Grid>
                     </Grid>
