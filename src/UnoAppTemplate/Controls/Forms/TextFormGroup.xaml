@@ -10,12 +10,11 @@
     Focusable="True"
     mc:Ignorable="d">
 
-    <Grid
-        x:Name="PART_Root"
-        BorderBrush="{ThemeResource OutlineColor}"
-        BorderThickness="1"
-        CornerRadius="4"
-        Focusable="True">
+    <Grid x:Name="PART_Root">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
         <TextBox
             x:Name="PART_InputElement"
             Padding="16"
@@ -55,36 +54,34 @@
             </TextBox.Template>
 
         </TextBox>
+
+        <TextBlock
+            x:Name="PART_Placeholder"
+            Padding="16"
+            VerticalAlignment="Center"
+            IsHitTestVisible="False">
+            Placeholder text ...
+        </TextBlock>
+        <Border
+            x:Name="PART_Border"
+            Grid.ColumnSpan="2"
+            BorderBrush="{ThemeResource OutlineColor}"
+            BorderThickness="1"
+            CornerRadius="4" />
+
+        <Grid Grid.Column="1">
+            <TextBlock>
+                sdf
+            </TextBlock>
+        </Grid>
+
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="CommonStates">
                 <VisualState x:Name="Normal" />
                 <VisualState x:Name="Focused">
-                    <Storyboard>
-                        <!--<DoubleAnimation
-                            Storyboard.TargetName="PART_Root"
-                            Storyboard.TargetProperty="CornerRadius"
-                            From="0"
-                            To="5"
-                            Duration="00:00:0.25">
-                            <DoubleAnimation.EasingFunction>
-                                <CubicEase EasingMode="EaseInOut" />
-                            </DoubleAnimation.EasingFunction>
-                        </DoubleAnimation>-->
-
-                        <!--<ObjectAnimationUsingKeyFrames
-                            Storyboard.TargetName="PART_Root"
-                            Storyboard.TargetProperty="BorderBrush"
-                            Duration="00:00:00.25">
-                            <DiscreteObjectKeyFrame KeyTime="00:00:00.05" Value="Green" />
-                            <DiscreteObjectKeyFrame KeyTime="00:00:00.10" Value="Yellow" />
-                            <DiscreteObjectKeyFrame KeyTime="00:00:00.15" Value="Blue" />
-                            <DiscreteObjectKeyFrame KeyTime="00:00:00.25" Value="Red" />
-                        </ObjectAnimationUsingKeyFrames>-->
-
-                    </Storyboard>
                     <VisualState.Setters>
-                        <Setter Target="PART_Root.BorderBrush" Value="{ThemeResource PrimaryColor}" />
-                        <Setter Target="PART_Root.BorderThickness" Value="2" />
+                        <Setter Target="PART_Border.BorderBrush" Value="{ThemeResource PrimaryColor}" />
+                        <Setter Target="PART_Border.BorderThickness" Value="2" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
