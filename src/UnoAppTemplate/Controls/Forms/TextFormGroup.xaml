@@ -37,6 +37,7 @@
                 VerticalAlignment="Stretch"
                 HorizontalContentAlignment="Stretch"
                 VerticalContentAlignment="Stretch"
+                FontFamily="{StaticResource AppFont}"
                 IsTabStop="True"
                 Text="{x:Bind For, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 TextChanged="OnTextChanged">

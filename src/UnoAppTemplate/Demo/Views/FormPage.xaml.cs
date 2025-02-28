@@ -12,13 +12,4 @@ public sealed partial class FormPage : Page
         this.InitializeComponent();
     }
 
-    private void OnErrorStateClicked(object sender, RoutedEventArgs e)
-    {
-        VisualStateManager.GoToState(PART_InputOne, "Error", true);
-    }
-
-    private void OnNomralStateClicked(object sender, RoutedEventArgs e)
-    {
-        VisualStateManager.GoToState(PART_InputOne, "Normal", true);
-    }
 }

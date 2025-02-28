@@ -71,14 +71,15 @@ public partial class ElementDirection : DependencyObject
             textBlocks = childs.Where(a => a is TextBlock).Cast<TextBlock>().ToList();
             frameWorkElements = childs.Where(a => a is FrameworkElement).Cast<FrameworkElement>().ToList();
             controls = childs.Where(a => a is Control).Cast<Control>().ToList();
+            textBoxes = childs.Where(a => a is TextBox).Cast<TextBox>().ToList();
         }
 
         grids.ForEach(ReverseGridChilds);
         frameWorkElements.ForEach(ReverseMarginsAndHorizontalAlignment);
         textBlocks.ForEach(ReverseTextBlock);
         controls.ForEach(ReversePadding);
+        textBoxes.ForEach(ReverseTextBoxes);
 
-        //textBoxes.ForEach(ReverseTextBoxes);
         //stackPanels.ForEach(ReverseStackPanel);
     }
 
@@ -192,17 +193,17 @@ public partial class ElementDirection : DependencyObject
 
 
 #if ANDROID
-            textBox.TextAlignment = TextAlignment.Start;
-            if (textBox.LayoutDirection == Android.Views.LayoutDirection.Ltr)
-            {
-                textBox.LayoutDirection = Android.Views.LayoutDirection.Rtl;
-                textBox.TextDirection = Android.Views.TextDirection.Rtl;
-            }
-            else
-            {
-                textBox.LayoutDirection = Android.Views.LayoutDirection.Ltr;
-                textBox.TextDirection = Android.Views.TextDirection.Ltr;
-            }
+        if (isLeft)
+        {
+            textBox.LayoutDirection = Android.Views.LayoutDirection.Rtl;
+            textBox.TextDirection = Android.Views.TextDirection.Rtl;
+        }
+        else
+        {
+            textBox.LayoutDirection = Android.Views.LayoutDirection.Ltr;
+            textBox.TextDirection = Android.Views.TextDirection.Ltr;
+        }
+
 #else
 
         if (isLeft)
@@ -227,19 +228,19 @@ public partial class ElementDirection : DependencyObject
         var isRight = textAlignment == TextAlignment.Right;
 
 #if ANDROID
-            //text.TextAlignment = TextAlignment.Start;
+        //text.TextAlignment = TextAlignment.Start;
 
-            if (isLeft)
-            {
-                text.TextDirection = Android.Views.TextDirection.Rtl;
-                text.HorizontalAlignment = HorizontalAlignment.Right;
+        if (isLeft)
+        {
+            text.TextDirection = Android.Views.TextDirection.Rtl;
+            text.HorizontalAlignment = HorizontalAlignment.Right;
 
-            }
-            else if (isRight)
-            {
-                text.TextDirection = Android.Views.TextDirection.Ltr;
-                text.HorizontalAlignment = HorizontalAlignment.Left;
-            }
+        }
+        else if (isRight)
+        {
+            text.TextDirection = Android.Views.TextDirection.Ltr;
+            text.HorizontalAlignment = HorizontalAlignment.Left;
+        }
 
 #else
         if (isLeft)

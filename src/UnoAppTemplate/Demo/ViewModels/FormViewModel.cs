@@ -12,4 +12,13 @@ public class FormViewModel : BaseViewModel
     [Required]
     [Display(Name = "First Name")]
     public string FirstName { get; set; }
+
+
+    [Display(Name = "Middle Name")]
+    public string MiddleName { get; set; }
+
+    [Display(Name = "Last Name")]
+    [Required]
+    public string LastName { get; set; }
+
 }
