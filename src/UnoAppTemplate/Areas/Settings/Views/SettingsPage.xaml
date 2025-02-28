@@ -65,11 +65,11 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
-                            <TextBlock Style="{StaticResource Body-Large}" Text="{x:Bind resx:CommonText.Language}" />
+                            <TextBlock Style="{StaticResource Body-Large}" Text="{x:Bind resx:CommonText.DarkMode}" />
                             <TextBlock
                                 Foreground="{ThemeResource OnSurfaceVariantColor}"
                                 Style="{StaticResource Body-Medium}"
-                                Text="{x:Bind resx:CommonText.Language_Desc}" />
+                                Text="{x:Bind resx:CommonText.DarkMode_Desc}" />
                         </StackPanel>
 
                         <ToggleSwitch

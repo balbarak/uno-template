@@ -16,14 +16,20 @@ public class ThemeViewModel : BaseViewModel
     public ICommand ShowSuccessAlertCommand { get; }
     public ICommand ShowErrorAlertCommand { get; }
 
+    public ICommand GoToFormsCommand { get; }
+
+
     public ThemeViewModel(INavigationService navService)
     {
         Title = CommonText.Theme;
         ShowToasterCommand = new AsyncRelayCommand(OnShowToasterCommand,AsyncRelayCommandOptions.AllowConcurrentExecutions);
         ShowSuccessAlertCommand = new AsyncRelayCommand(ShowSuccessAlert);
         ShowErrorAlertCommand = new AsyncRelayCommand(ShowErrorAlert);
+
+        GoToFormsCommand = new AsyncRelayCommand(GoToForms);
         _navService = navService;
     }
+
 
     private async Task OnShowToasterCommand()
     {
@@ -38,8 +44,11 @@ public class ThemeViewModel : BaseViewModel
     private async Task ShowErrorAlert()
     {
         await _navService.ShowAlert("Error", "This is a error alert example", AlertType.Error);
-
     }
 
+    private async Task GoToForms()
+    {
+        await _navService.Navigate(RouteService.FORM_PAGE);
+    }
 
 }

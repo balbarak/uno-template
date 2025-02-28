@@ -79,6 +79,24 @@ namespace UnoAppTemplate.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to الوضع الليلي.
+        /// </summary>
+        public static string DarkMode {
+            get {
+                return ResourceManager.GetString("DarkMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تفعيل خاصية الوضع الليلي.
+        /// </summary>
+        public static string DarkMode_Desc {
+            get {
+                return ResourceManager.GetString("DarkMode_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to الرئيسية.
         /// </summary>
         public static string Home {

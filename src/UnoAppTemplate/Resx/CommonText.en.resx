@@ -127,4 +127,10 @@
   <data name="PleaseWait" xml:space="preserve">
     <value>Please wait ...</value>
   </data>
+  <data name="DarkMode" xml:space="preserve">
+    <value>Dark Mode</value>
+  </data>
+  <data name="DarkMode_Desc" xml:space="preserve">
+    <value>Activate dark mode</value>
+  </data>
 </root>

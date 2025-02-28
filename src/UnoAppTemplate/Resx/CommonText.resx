@@ -127,4 +127,10 @@
   <data name="PleaseWait" xml:space="preserve">
     <value>الرجاء الانتظار ...</value>
   </data>
+  <data name="DarkMode" xml:space="preserve">
+    <value>الوضع الليلي</value>
+  </data>
+  <data name="DarkMode_Desc" xml:space="preserve">
+    <value>تفعيل خاصية الوضع الليلي</value>
+  </data>
 </root>

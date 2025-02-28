@@ -29,5 +29,6 @@ public class Startup
         services.AddPage<ThemeViewModel, ThemePage>(RouteService.THEME_PAGE);
         services.AddPage<SettingsViewModel, SettingsPage>(RouteService.SETTINGS_PAGE);
         services.AddPage<LoadingViewModel, LoadingPage>(RouteService.LOADING_PAGE);
+        services.AddPage<FormViewModel, FormPage>(RouteService.FORM_PAGE);
     }
 }

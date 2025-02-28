@@ -16,6 +16,7 @@ public class RouteService
     public const string THEME_PAGE = "//theme";
     public const string SETTINGS_PAGE = "//settings";
     public const string LOADING_PAGE = "//loading";
+    public const string FORM_PAGE = "/forms";
 
     static RouteService()
     {

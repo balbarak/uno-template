@@ -26,6 +26,25 @@
                     <Grid Style="{ThemeResource Card}">
                         <Grid Style="{StaticResource Card-Content}">
                             <StackPanel>
+                                <TextBlock Style="{ThemeResource Card-Title}" Text="Forms" />
+                                <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Forms Examples" />
+
+                                <StackPanel Spacing="8">
+
+                                    <Button
+                                        HorizontalAlignment="Stretch"
+                                        Command="{x:Bind ViewModel.GoToFormsCommand}"
+                                        Content="Forms" />
+
+
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Style="{ThemeResource Card}">
+                        <Grid Style="{StaticResource Card-Content}">
+                            <StackPanel>
                                 <TextBlock Style="{ThemeResource Card-Title}" Text="Sheet" />
                                 <TextBlock Style="{ThemeResource Card-SubTitle}" Text="Bottom sheet using flyout" />
 

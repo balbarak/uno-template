@@ -38,7 +38,7 @@
             Background="Transparent"
             Command="{x:Bind BackCommand}"
             CornerRadius="0"
-            Foreground="Red">
+            Foreground="{ThemeResource OnSurfaceColor}">
             <SymbolIcon Margin="8,0" Symbol="Back" />
         </Button>
 

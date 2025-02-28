@@ -33,6 +33,8 @@ public class ButtonViewModel : BaseViewModel
 
         if (_langManager.CurrentLanguage == AppLanguage.Arabic)
         {
+            ButtonTitle = "الازرار";
+            ButtonSubtitle = "انماط الازرار";
             LoadingButtonTitle = "زر التحميل";
             LoadingButtonSubtitle = "يستخدم لعرض جاري التحميل";
             Title = "الازرار";
@@ -45,6 +47,8 @@ public class ButtonViewModel : BaseViewModel
         }
         else
         {
+            ButtonTitle = "Buttons";
+            ButtonSubtitle = "Buttons styles";
             LoadingButton = "Loading Button";
             LoadingButtonTitle = "Loading Buttons";
             LoadingButtonSubtitle = "Used to display loading indicators";
