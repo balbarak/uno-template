@@ -5,6 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:UnoAppTemplate.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:UnoAppTemplate.ViewModels"
+    d:DataContext="{d:DesignInstance Type=vm:FormViewModel}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -16,13 +18,25 @@
 
         <local:PageHeader Header="{Binding Title}" />
 
-        <Grid Grid.Row="1">
+        <Grid
+            Grid.Row="1"
+            Padding="{StaticResource Container-Thickness}"
+            Background="{ThemeResource SurfaceContainerLowColor}">
             <Grid Style="{StaticResource Card}">
                 <Grid Style="{StaticResource Card-Content}">
-                    <StackPanel Spacing="19">
-                        <local:TextFormGroup />
-                        <TextBox PlaceholderText="Hello" />
+                    <StackPanel Spacing="24">
+                        <local:TextFormGroup
+                            x:Name="PART_InputOne"
+                            For="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            HelpText="Help text hard coded"
+                            LabelText="Hard Coded"
+                            Placeholder="Placeholder ..." />
 
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button Click="OnNomralStateClicked">Normal State</Button>
+                            <Button Click="OnErrorStateClicked">Error State</Button>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
 

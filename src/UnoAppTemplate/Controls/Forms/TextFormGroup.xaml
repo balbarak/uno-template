@@ -7,81 +7,136 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="300"
     d:DesignWidth="400"
-    Focusable="True"
     mc:Ignorable="d">
 
     <Grid x:Name="PART_Root">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-        <TextBox
-            x:Name="PART_InputElement"
-            Padding="16"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
-            HorizontalContentAlignment="Stretch"
-            VerticalContentAlignment="Stretch"
-            IsTabStop="True"
-            TextChanged="OnTextChanged">
-            <TextBox.Template>
-                <ControlTemplate TargetType="TextBox">
-                    <Grid x:Name="PART_TextContainer" Background="{TemplateBinding Background}">
-                        <ScrollViewer
-                            x:Name="ContentElement"
-                            Padding="{TemplateBinding Padding}"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            HorizontalContentAlignment="Stretch"
-                            AutomationProperties.AccessibilityView="Raw"
-                            HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
-                            HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}"
-                            IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
-                            IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}"
-                            IsTabStop="False"
-                            IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}"
-                            VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
-                            VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}"
-                            ZoomMode="Disabled">
-                            <ScrollViewer.RenderTransform>
-                                <CompositeTransform x:Name="ContentTransform" />
-                            </ScrollViewer.RenderTransform>
-                        </ScrollViewer>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-
-                    </Grid>
-                </ControlTemplate>
-            </TextBox.Template>
-
-        </TextBox>
-
-        <TextBlock
-            x:Name="PART_Placeholder"
-            Padding="16"
-            VerticalAlignment="Center"
-            IsHitTestVisible="False">
-            Placeholder text ...
-        </TextBlock>
-        <Border
-            x:Name="PART_Border"
-            Grid.ColumnSpan="2"
-            BorderBrush="{ThemeResource OutlineColor}"
-            BorderThickness="1"
-            CornerRadius="4" />
-
-        <Grid Grid.Column="1">
-            <TextBlock>
-                sdf
-            </TextBlock>
+        <Grid>
+            <TextBlock
+                x:Name="PART_LabelText"
+                Padding="16,0,16,4"
+                Foreground="{ThemeResource OnSurfaceColor}"
+                Style="{StaticResource Body-Medium}"
+                Text="{x:Bind LabelText, Mode=OneWay}" />
         </Grid>
 
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBox
+                x:Name="PART_InputElement"
+                Padding="16"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                HorizontalContentAlignment="Stretch"
+                VerticalContentAlignment="Stretch"
+                IsTabStop="True"
+                Text="{x:Bind For, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextChanged="OnTextChanged">
+                <TextBox.Template>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid x:Name="PART_TextContainer" Background="{TemplateBinding Background}">
+                            <ScrollViewer
+                                x:Name="ContentElement"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                HorizontalContentAlignment="Stretch"
+                                AutomationProperties.AccessibilityView="Raw"
+                                HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}"
+                                IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}"
+                                IsTabStop="False"
+                                IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}"
+                                VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                                VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}"
+                                ZoomMode="Disabled">
+                                <ScrollViewer.RenderTransform>
+                                    <CompositeTransform x:Name="ContentTransform" />
+                                </ScrollViewer.RenderTransform>
+                            </ScrollViewer>
+
+                        </Grid>
+                    </ControlTemplate>
+                </TextBox.Template>
+
+            </TextBox>
+
+            <TextBlock
+                x:Name="PART_Placeholder"
+                Padding="16"
+                VerticalAlignment="Center"
+                Foreground="{ThemeResource OnSurfaceVariantColor}"
+                IsHitTestVisible="False"
+                Text="{x:Bind Placeholder}"
+                Visibility="{Binding Text, ElementName=PART_InputElement, Converter={StaticResource EmptyStringToTrueConverter}}" />
+
+            <Border
+                x:Name="PART_Border"
+                Grid.ColumnSpan="2"
+                BorderBrush="{ThemeResource OutlineColor}"
+                BorderThickness="1"
+                CornerRadius="4" />
+
+            <Grid Grid.Column="1">
+                <FontIcon
+                    x:Name="PART_ErrorIcon"
+                    Margin="12,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="{ThemeResource ErrorColor}"
+                    Glyph="&#xe001;"
+                    Style="{StaticResource FontIcon-Material}"
+                    Visibility="Collapsed" />
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <TextBlock
+                x:Name="PART_HelpText"
+                Padding="16,4,16,0"
+                Foreground="{ThemeResource OnSurfaceVariantColor}"
+                Style="{StaticResource Body-Small}"
+                Text="{x:Bind HelpText, Mode=OneWay}" />
+        </Grid>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="CommonStates">
+
                 <VisualState x:Name="Normal" />
+
                 <VisualState x:Name="Focused">
                     <VisualState.Setters>
                         <Setter Target="PART_Border.BorderBrush" Value="{ThemeResource PrimaryColor}" />
                         <Setter Target="PART_Border.BorderThickness" Value="2" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="Error">
+                    <VisualState.Setters>
+                        <Setter Target="PART_LabelText.Foreground" Value="{ThemeResource ErrorColor}" />
+                        <Setter Target="PART_Border.BorderBrush" Value="{ThemeResource ErrorColor}" />
+                        <Setter Target="PART_HelpText.Foreground" Value="{ThemeResource ErrorColor}" />
+                        <Setter Target="PART_Border.BorderThickness" Value="1" />
+                        <Setter Target="PART_ErrorIcon.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="ErrorFocused">
+                    <VisualState.Setters>
+                        <Setter Target="PART_HelpText.Foreground" Value="{ThemeResource ErrorColor}" />
+
+                        <Setter Target="PART_LabelText.Foreground" Value="{ThemeResource ErrorColor}" />
+                        <Setter Target="PART_Border.BorderBrush" Value="{ThemeResource ErrorColor}" />
+                        <Setter Target="PART_Border.BorderThickness" Value="2" />
+                        <Setter Target="PART_ErrorIcon.Visibility" Value="Visible" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
