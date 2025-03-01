@@ -103,7 +103,6 @@
             <Setter Property="Background" Value="{ThemeResource SurfaceColor}" />
             <Setter Property="BorderBrush" Value="{ThemeResource OutlineVariantColor}" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="Foreground" Value="{ThemeResource OnSurfaceColor}" />
             <Setter Property="CornerRadius" Value="8" />
             <Setter Property="Padding" Value="16" />
         </Style>
